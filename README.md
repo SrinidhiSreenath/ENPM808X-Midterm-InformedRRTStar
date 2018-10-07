@@ -1,15 +1,54 @@
-# C++ Boilerplate
-[![Build Status](https://travis-ci.org/dpiet/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/dpiet/cpp-boilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/dpiet/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/dpiet/cpp-boilerplate?branch=master)
+# Informed RRT* Algorithm - C++ Implementation
+[![Build Status](https://travis-ci.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar.svg?branch=master)](https://travis-ci.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar)
+[![Coverage Status](https://coveralls.io/repos/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/badge.svg?branch=master)](https://coveralls.io/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar?branch=master)
 ---
 
 ## Overview
 
-Simple starter C++ project with:
+This repository consists of the C++ implementation of the Informed RRT* algorithm for autonomous navigation. Robotic vacuum
+cleaners are becoming a household thing in our modern world and has a huge market potential. One of the main components of
+the robotic vacuum cleaners is it's ability to plan a path from a given start to end point in an environment. This software
+is developed for a fictional cleaning robot Xoomba for ACME Robotics, a fictional organization.
 
-- cmake
-- googletest
+Sampling-based algorithms represent the configuration space with a roadmap of sampled configurations. These algorithms work 
+well for high-dimensional configuration spaces, because unlike combinatorial algorithms, their running time is not 
+(explicitly) exponentially dependent on the dimension of configurations.
 
+Rapidly-Exploring Random Trees (RRTs) is a planning technique for single-query problems which uses an incremental tree 
+expansion from randomly drawn samples to grow towards previously unsearchable areas in the map space. Optimal RRTS (RRT*), 
+an improvement on RRTs, extend the problem to finding the optimal solution in the planning space that is computed 
+asymptotically. Informed RRT* improves the convergence speed of RRT* by introducing a heuristic, similar to the way in which 
+A* improves upon Dijkstra’s algorithm.
+
+## Agile Development - Solo Iterative Process (SIP)
+Solo Iterative Process (SIP) was used in the development of the project.
+
+[Product backlog, Iteration backlogs and Work log](https://docs.google.com/spreadsheets/d/1fvrJKm83capWolsztqe_W-Q733m2EkzF_6xD1WWORhc/edit?usp=sharing).
+
+## License
+```
+MIT License
+
+Copyright (c) 2018 Srinidhi Sreenath
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 ## Standard install via command-line
 ```
 git clone --recursive https://github.com/dpiet/cpp-boilerplate
@@ -120,7 +159,3 @@ perspetive view (or Windows->Perspective->Open Perspective->C/C++).
     Project Explorer and choose Source -> Format
 
 [reference-id-for-eclipse-cpp-google-style]: https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-cpp-google-style.xml
-
-- Git
-
-    It is possible to manage version control through Eclipse and the git plugin, but it typically requires creating another project. If you're interested in this, try it out yourself and contact me on Canvas.
