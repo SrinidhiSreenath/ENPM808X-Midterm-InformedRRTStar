@@ -20,7 +20,7 @@ an improvement on RRTs, extend the problem to finding the optimal solution in th
 asymptotically. Informed RRT* improves the convergence speed of RRT* by introducing a heuristic, similar to the way in which 
 A* improves upon Dijkstra’s algorithm.
 
-## Agile Development - Solo Iterative Process (SIP)
+## Solo Iterative Process (SIP)
 Solo Iterative Process (SIP) was used in the development of the project.
 
 [Product backlog, Iteration backlogs and Work log](https://docs.google.com/spreadsheets/d/1fvrJKm83capWolsztqe_W-Q733m2EkzF_6xD1WWORhc/edit?usp=sharing).
