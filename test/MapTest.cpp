@@ -48,7 +48,7 @@ std::vector<std::vector<double>>
     obstacles;  ///< variable to hold obstacles and their vertices
 
 /**
- *@brief Test case for check setting workspace boundary
+ *@brief Test case to check setting workspace boundary
 
  *@param none
  *@return none
