@@ -22,9 +22,9 @@
  ******************************************************************************/
 
 /**
- *  @file    map.hpp
+ *  @file    map.cpp
  *  @author  Srinidhi Sreenath (SrinidhiSreenath)
- *  @date    10/7/2018
+ *  @date    10/8/2018
  *  @version 1.0
  *
  *  @brief Map class definition
