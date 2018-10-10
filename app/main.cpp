@@ -1,8 +1,3 @@
 #include <iostream>
-#include <lib.hpp>
 
-int main()
-{
-    dummy();
-    return 0;
-}
+int main() { return 0; }
