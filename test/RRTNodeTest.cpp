@@ -40,8 +40,6 @@
 // Class header file
 #include "RRTNode.hpp"
 
-RRTNode newNode;
-
 /**
  *@brief Test case to check setting state of RRTNode
 
@@ -49,6 +47,7 @@ RRTNode newNode;
  *@return none
  */
 TEST(RRTNodeSetStateTest, testSetStateOfRRTNode) {
+  RRTNode newNode;
   newNode.setState(2.73, 2.68);
   auto state = newNode.getState();
 
@@ -63,10 +62,22 @@ TEST(RRTNodeSetStateTest, testSetStateOfRRTNode) {
  *@return none
  */
 TEST(RRTNodeSetParentNodeTest, testSetParentOfCurrentRRTNode) {
-  std::shared_ptr<RRTNode> parentNode(new RRTNode);
-  newNode.setParent(parentNode);
+  std::vector<RRTNode> RRTree;
+  RRTNode newNode;
+  RRTNode parentNode;
 
-  ASSERT_EQ(newNode.getParent(), parentNode);
+  RRTree.push_back(newNode);
+
+  std::vector<double> parentState{3, 4};
+  parentNode.setState(parentState[0], parentState[1]);
+  RRTree.push_back(parentNode);
+
+  std::shared_ptr<RRTNode> parentNodePtr = std::make_shared<RRTNode>(RRTree[1]);
+  RRTree[0].setParent(parentNodePtr);
+  ASSERT_EQ(RRTree[0].getParent(), parentNodePtr);
+
+  auto parentPtr = RRTree[0].getParent();
+  ASSERT_EQ(parentPtr->getState(), parentState);
 }
 
 /**
@@ -76,16 +87,34 @@ TEST(RRTNodeSetParentNodeTest, testSetParentOfCurrentRRTNode) {
  *@return none
  */
 TEST(RRTNodeChangeParentNodeTest, testSetNewParentForCurrentRRTNode) {
-  std::shared_ptr<RRTNode> currentParentNode(new RRTNode);
-  newNode.setParent(currentParentNode);
+  std::vector<RRTNode> RRTree;
+  RRTNode newNode;
+  RRTNode parentNode;
+  RRTNode newParentNode;
 
-  ASSERT_EQ(newNode.getParent(), currentParentNode);
+  RRTree.push_back(newNode);
+
+  std::vector<double> parentState{8.96, 7.26};
+  parentNode.setState(parentState[0], parentState[1]);
+  RRTree.push_back(parentNode);
+
+  std::vector<double> newParentState{5.45, 6.69};
+  newParentNode.setState(newParentState[0], newParentState[1]);
+  RRTree.push_back(newParentNode);
+
+  std::shared_ptr<RRTNode> parentNodePtr = std::make_shared<RRTNode>(RRTree[1]);
+  RRTree[0].setParent(parentNodePtr);
+  ASSERT_EQ(RRTree[0].getParent(), parentNodePtr);
+  auto parentPtr = RRTree[0].getParent();
+  ASSERT_EQ(parentPtr->getState(), parentState);
 
   // Change the parent of the current node
-  std::shared_ptr<RRTNode> newParentNode(new RRTNode);
-  newNode.setParent(newParentNode);
-
-  ASSERT_EQ(newNode.getParent(), newParentNode);
+  std::shared_ptr<RRTNode> newParentNodePtr =
+      std::make_shared<RRTNode>(RRTree[2]);
+  RRTree[0].setParent(newParentNodePtr);
+  ASSERT_EQ(RRTree[0].getParent(), newParentNodePtr);
+  auto newParentPtr = RRTree[0].getParent();
+  ASSERT_EQ(newParentPtr->getState(), newParentState);
 }
 
 /**
@@ -95,6 +124,7 @@ TEST(RRTNodeChangeParentNodeTest, testSetNewParentForCurrentRRTNode) {
  *@return none
  */
 TEST(RRTNodeSetCostToCome, testCostToComeForCurrentNode) {
+  RRTNode newNode;
   newNode.setCostToCome(23.69);
 
   ASSERT_EQ(newNode.getCostToCome(), 23.69);
