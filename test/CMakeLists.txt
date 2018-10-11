@@ -5,6 +5,8 @@ add_executable(
     main.cpp
     MapTest.cpp
     ../app/map.cpp
+    RRTNodeTest.cpp
+    ../app/RRTNode.cpp
 )
 
 target_include_directories(cpp-test PUBLIC ../vendor/googletest/googletest/include 
