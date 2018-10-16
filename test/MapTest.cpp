@@ -205,4 +205,6 @@ TEST(MapResetTest, testMapResetFunction) {
 
   ASSERT_EQ(sampleMap.obstacleList.size(), size);
   ASSERT_EQ(sampleMap.workspaceBoundary.size(), size);
+  ASSERT_EQ(sampleMap.boundaryXlimits.size(), size);
+  ASSERT_EQ(sampleMap.boundaryYlimits.size(), size);
 }
