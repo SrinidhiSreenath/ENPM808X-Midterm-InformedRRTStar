@@ -18,12 +18,16 @@ matrix:
             - g++-5
             - cmake
             - cmake-data
+            - python-matplotlib
+            - python-numpy
+            - python2.7-dev
       env: COMPILER=g++-5
 
 before_install:
   - pip install --user cpp-coveralls
 install:
   - sudo apt-get install -y -qq lcov
+  - sudo apt-get install python-matplotlib python-numpy python2.7-dev
 script:
   - export CXX=$COMPILER;
   - mkdir build
