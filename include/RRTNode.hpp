@@ -51,9 +51,11 @@ class RRTNode {
  private:
   std::vector<double>
       state;  ///< variable to hold the state of the node i.e [x,y] coordinates
-  std::shared_ptr<RRTNode> parent;  ///< pointer to the parent node object
-  double costToCome;  ///< cost variable describing the cost to arrive at this
-                      ///< node from the start node
+  std::shared_ptr<RRTNode> parent =
+      nullptr;  ///< pointer to the parent node object. A null pointer by
+                ///< default
+  double costToCome = 0.0;  ///< cost variable describing the cost to arrive at
+                            ///< this node from the start node
  public:
   /**
    *   @brief  Default constructor for RRTNode
