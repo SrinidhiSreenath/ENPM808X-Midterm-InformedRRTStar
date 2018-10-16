@@ -125,3 +125,38 @@ TEST(RRTValidPathTest, testValidityOfPathGivenByTheRRTPlanner) {
     ASSERT_LE(dist, driveParam + 0.0001);
   }
 }
+
+TEST(RRTPlannerResetTest, testRRTResetFunction) {
+  // Define the environment
+  testBoundary.push_back(std::make_pair(0.0, 0.0));
+  testBoundary.push_back(std::make_pair(100.0, 0.0));
+  testBoundary.push_back(std::make_pair(100.0, 100.0));
+  testBoundary.push_back(std::make_pair(0.0, 100.0));
+
+  testObstacles.push_back({0.0, 80.0, 10.0, 80.0, 10.0, 90.0, 0.0, 90.0});
+  testObstacles.push_back({0.0, 90.0, 25.0, 90.0, 25.0, 100.0, 0.0, 100.0});
+  testObstacles.push_back({20.0, 0.0, 80.0, 0.0, 80.0, 15.0, 20.0, 15.0});
+  testObstacles.push_back({93.0, 40.0, 100.0, 40.0, 100.0, 90.0, 93.0, 90.0});
+
+  // Set the map for the planner
+  testPlan.setMap(testBoundary, testObstacles);
+
+  // Set start and goal point
+  std::vector<double> start = {1.0, 1.0};
+  std::vector<double> goal = {50.0, 51.0};
+
+  testPlan.setStartAndGoal(start, goal);
+
+  // Execute the planner
+  testPlan.runPlanner();
+
+  // Reset the planner
+  testPlan.resetPlanner();
+
+  // Assert segmentation fault when trying to access the RRTree or the planned
+  // path
+  ASSERT_EXIT((testPlan.getRRTree(), exit(0)), ::testing::ExitedWithCode(0),
+              ".*");
+  ASSERT_EXIT((testPlan.getPlannerPath(), exit(0)),
+              ::testing::KilledBySignal(SIGSEGV), ".*");
+}
