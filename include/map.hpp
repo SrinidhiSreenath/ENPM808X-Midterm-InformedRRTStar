@@ -54,7 +54,12 @@ class Map {
                      ///< x2, y2 ... xN, yN]
   std::vector<std::pair<double, double>>
       workspaceBoundary;  ///< Variable to hold workspace boundary as a vector
-                          ///< of paired points [x,y]
+  ///< of paired points [x,y]
+  std::vector<double> boundaryXlimits;  ///< Variable to hold min and max limits
+                                        ///< of the workspace boundary on x axis
+  std::vector<double> boundaryYlimits;  ///< Variable to hold min and max limits
+                                        ///< of the workspace boundary on y axis
+
   /**
    *   @brief  Default constructor for Map
    *
