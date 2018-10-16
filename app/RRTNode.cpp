@@ -24,7 +24,7 @@
 /**
  *  @file    RRTNode.cpp
  *  @author  Srinidhi Sreenath (SrinidhiSreenath)
- *  @date    10/10/2018
+ *  @date    10/13/2018
  *  @version 1.0
  *
  *  @brief RRTNode class definition
@@ -43,16 +43,19 @@ RRTNode::RRTNode() {}
 
 RRTNode::~RRTNode() {}
 
-void RRTNode::setState(const double &x, const double &y) { return; }
-
-std::vector<double> RRTNode::getState() { return 0; }
-
-void RRTNode::setParent(const std::shared_ptr<RRTNode> &parentObject) {
-  return;
+void RRTNode::setState(const double &x, const double &y) {
+  state.push_back(x);
+  state.push_back(y);
 }
 
-std::shared_ptr<RRTNode> RRTNode::getParent() { return; }
+std::vector<double> RRTNode::getState() { return state; }
 
-void RRTNode::setCostToCome(const double &cost) { return; }
+void RRTNode::setParent(const std::shared_ptr<RRTNode> &parentObject) {
+  parent = parentObject;
+}
 
-double RRTNode::getCostToCome() { return 0; }
+std::shared_ptr<RRTNode> RRTNode::getParent() { return parent; }
+
+void RRTNode::setCostToCome(const double &cost) { costToCome = cost; }
+
+double RRTNode::getCostToCome() { return costToCome; }
