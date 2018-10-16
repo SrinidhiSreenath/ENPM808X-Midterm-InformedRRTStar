@@ -52,6 +52,22 @@ SOFTWARE.
 
 [matplotlib-cpp](https://github.com/lava/matplotlib-cpp), a simple C++ plotting library, resemble the plotting API used by Matlab, is used to facilitate visualization.
 
+### Installation
+matplotlib-cpp works by wrapping the popular python plotting library matplotlib. (matplotlib.org) This means you have to have a working python installation, including development headers. On Ubuntu:
+```
+sudo apt-get install python-matplotlib python-numpy python2.7-dev
+```
+The C++-part of the library consists of the single header file matplotlibcpp.h which can be placed anywhere. Place this in the include directory of the project.
+
+### CMake
+Since the build system is CMake, the following is added to the CMakeLists.txt:
+```
+find_package(PythonLibs 2.7)
+target_include_directories(myproject PRIVATE ${PYTHON_INCLUDE_DIRS})
+target_link_libraries(myproject ${PYTHON_LIBRARIES})
+```
+where myproject is the project to be built.
+
 ## Standard install via command-line
 ```
 git clone https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar.git
