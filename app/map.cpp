@@ -22,9 +22,9 @@
  ******************************************************************************/
 
 /**
- *  @file    map.cpp
+ *  @file    map.hpp
  *  @author  Srinidhi Sreenath (SrinidhiSreenath)
- *  @date    10/8/2018
+ *  @date    10/13/2018
  *  @version 1.0
  *
  *  @brief Map class definition
@@ -51,35 +51,135 @@ Map::~Map() {}
 
 void Map::setWorkspaceBoundary(
     const std::vector<std::pair<double, double>> &boundary) {
-  return;
+  workspaceBoundary = boundary;
+
+  double maxX = std::numeric_limits<double>::min();
+  double minX = std::numeric_limits<double>::max();
+  double maxY = std::numeric_limits<double>::min();
+  double minY = std::numeric_limits<double>::max();
+
+  for (const auto &bound : workspaceBoundary) {
+    if (bound.first > maxX) {
+      maxX = bound.first;
+    }
+    if (bound.first < minX) {
+      minX = bound.first;
+    }
+    if (bound.second > maxY) {
+      maxY = bound.first;
+    }
+    if (bound.second < minY) {
+      minY = bound.first;
+    }
+  }
+
+  boundaryXlimits = {minX, maxX};
+  boundaryYlimits = {minY, maxY};
 }
 
-void Map::addObstacle(const std::vector<double> &obstacle) { return; }
+void Map::addObstacle(const std::vector<double> &obstacle) {
+  obstacleList.push_back(obstacle);
+}
 
 bool Map::onSegment(const std::pair<double, double> &firstPoint,
                     const std::pair<double, double> &secondPoint,
                     const std::pair<double, double> &thirdPoint) {
-  return 0;
+  if (secondPoint.first <= std::max(firstPoint.first, thirdPoint.first) &&
+      secondPoint.first >= std::min(firstPoint.first, thirdPoint.first) &&
+      secondPoint.second <= std::max(firstPoint.second, thirdPoint.second) &&
+      secondPoint.second >= std::min(firstPoint.second, thirdPoint.second)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 int Map::getOrientation(const std::pair<double, double> &firstPoint,
                         const std::pair<double, double> &secondPoint,
                         const std::pair<double, double> &thirdPoint) {
-  return 0;
+  int orientation = (secondPoint.second - firstPoint.second) *
+                        (thirdPoint.first - secondPoint.first) -
+                    (secondPoint.first - firstPoint.first) *
+                        (thirdPoint.second - secondPoint.second);
+
+  if (orientation == 0) {
+    return 0;
+  } else {
+    return (orientation > 0) ? 1 : 2;
+  }
 }
 
 bool Map::isIntersect(const std::pair<double, double> &treeNode,
                       const std::pair<double, double> &newNode,
                       const std::pair<double, double> &firstVertex,
                       const std::pair<double, double> &secondVertex) {
-  return 0;
+  int firstOrient = getOrientation(treeNode, newNode, firstVertex);
+  int secondOrient = getOrientation(treeNode, newNode, secondVertex);
+  int thirdOrient = getOrientation(firstVertex, secondVertex, treeNode);
+  int fourthOrient = getOrientation(firstVertex, secondVertex, newNode);
+
+  // General case
+  if (firstOrient != secondOrient && thirdOrient != fourthOrient) return true;
+
+  // Special Cases
+  // treeNode, newNode and firstVertex are colinear and firstVertex lies on
+  // segment connecting new node to tree
+  if (firstOrient == 0 && onSegment(treeNode, firstVertex, newNode))
+    return true;
+
+  // treeNode, newNode and secondVertex are colinear and secondVertex lies on
+  // segment connecting new node to tree
+  if (secondOrient == 0 && onSegment(treeNode, secondVertex, newNode))
+    return true;
+
+  // firstVertex, secondVertex and treeNode are colinear and treeNode lies on
+  // obstacle edge
+  if (thirdOrient == 0 && onSegment(firstVertex, treeNode, secondVertex))
+    return true;
+
+  // firstVertex, secondVertex and newNode are colinear and newNode lies on
+  // obstacle edge
+  if (fourthOrient == 0 && onSegment(firstVertex, newNode, secondVertex))
+    return true;
+
+  return false;  // Doesn't fall in any of the above cases
 }
 
-bool Map::isOutofMap(const std::pair<double, double> &node) { return 0; }
+bool Map::isOutofMap(const std::pair<double, double> &node) {
+  if (node.first > boundaryXlimits[1] || node.first < boundaryXlimits[0] ||
+      node.second > boundaryYlimits[1] || node.second < boundaryXlimits[0]) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 bool Map::isValidNode(const std::pair<double, double> &treeNode,
                       const std::pair<double, double> &newNode) {
-  return 0;
+  if (isOutofMap(newNode)) {
+    return false;
+  }
+  for (const auto &obstacle : obstacleList) {
+    for (size_t i = 0; i < obstacle.size(); i += 2) {
+      std::pair<double, double> firstVertex, secondVertex;
+      if (obstacle[i + 1] != obstacle.back()) {
+        firstVertex = std::make_pair(obstacle[i], obstacle[i + 1]);
+        secondVertex = std::make_pair(obstacle[i + 2], obstacle[i + 3]);
+      } else {
+        firstVertex = std::make_pair(obstacle[i], obstacle[i + 1]);
+        secondVertex = std::make_pair(obstacle[0], obstacle[1]);
+      }
+      if (isIntersect(treeNode, newNode, firstVertex, secondVertex)) {
+        return false;
+      }
+    }
+  }
+  return true;
 }
 
-void Map::resetMap() { return; }
+void Map::resetMap() {
+  obstacleList.clear();
+  workspaceBoundary.clear();
+  boundaryXlimits.clear();
+  boundaryYlimits.clear();
+}
