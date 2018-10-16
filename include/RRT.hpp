@@ -31,7 +31,7 @@
  *
  *  @section DESCRIPTION
  *
- *  Header file for class RRT which implements the Rapidly-exploring random tree
+ *  Header file for class RRT which implements the Rapidly-exploring Random Tree
  *  algorithm to find a path given a map.
  *
  */
@@ -39,8 +39,8 @@
 #ifndef INCLUDE_RRT_HPP_
 #define INCLUDE_RRT_HPP_
 
-#include "include/RRTNode.hpp"
-#include "include/map.hpp"
+#include "RRTNode.hpp"
+#include "map.hpp"
 
 /**
  *  @brief Class RRT
@@ -49,10 +49,10 @@
  */
 class RRT {
  private:
-  const size_t maxIterations_ = 1000;  ///< parameter that defines maximum
-                                       ///< iterations the algorithm should run
+  const size_t maxIterations_ = 10000;  ///< parameter that defines maximum
+                                        ///< iterations the algorithm should run
   const double driveParameter_ =
-      1.0;  ///< a parameter of the RRT algorithm that defines the maximum
+      2.0;  ///< a parameter of the RRT algorithm that defines the maximum
             ///< distance the random tree grows by one node a time
 
   std::vector<double>
@@ -62,15 +62,14 @@ class RRT {
   std::vector<std::pair<double, double>>
       plannerPath_;  ///< a vector of pair points [x,y] describing the path the
                      ///< algorithm finds
+  std::vector<RRTNode>
+      RRTree;  ///< vector of object of class RRTNode used to store the tree
+               ///< datastructure the algorithm generates
 
   Map map_;  ///< object of class Map to hold the information regarding the
              ///< environment
 
  public:
-  std::vector<RRTNode>
-      RRTree;  ///< vector of object of class RRTNode used to store the tree
-               ///< datastructure the algorithm generates
-
   /**
    *   @brief  Default constructor for RRT. Prints basic information regarding
    *           planner.
@@ -78,7 +77,7 @@ class RRT {
    *   @param  none
    *   @return void
    */
-  RRT() {}
+  RRT();
 
   /**
    *   @brief  Destructor for RRT
@@ -86,14 +85,23 @@ class RRT {
    *   @param  none
    *   @return void
    */
-  ~RRT() {}
+  ~RRT();
+
+  /**
+   *   @brief  function to return planner parameters
+   *
+   *   @param none
+   *   @return pair of values (unsigned int, double) defining the max iterations
+   *           and drive paramater respectively
+   */
+  std::pair<size_t, double> getPlannerParameters();
+
   /**
    *   @brief  setter function to define the environment
    *
-   *   @param  boundary is a vector of paired points [x,y] defining the boundary
-   *           vertices.
-   *           obstacles is a vector of obstacle container which in turn is a
-   *           vector of double points [x1,y1,x2,y2...xN,yN] defining the
+   *   @param  boundary is a vector of paired points [x,y] defining the
+   * boundary vertices. obstacles is a vector of obstacle container which in
+   * turn is a vector of double points [x1,y1,x2,y2...xN,yN] defining the
    *           boundary vertices of an obstacle in the environment.
    *   @return void
    */
@@ -125,13 +133,13 @@ class RRT {
    *
    *   @param  node is a random point in the environment as a vector of double
    *           points
-   *           treeNode is an object of class RRTNode representing a node in the
+   *           treeNode is a vector of double type representing a node in the
    *           RRTree
    *   @return the euclidean distance between the random node and the tree node
    *           as double element
    */
   double getEuclideanDistance(const std::vector<double> &node,
-                              const RRTNode &treeNode);
+                              const std::vector<double> &treeNode);
 
   /**
    *   @brief  finds the closest node in the tree to a given randomly sampled
@@ -191,6 +199,14 @@ class RRT {
    *           waypoints
    */
   std::vector<std::pair<double, double>> getPlannerPath();
+
+  /**
+   *   @brief  returns the tree resulting from the RRT algorithm
+   *
+   *   @param  none
+   *   @return vector of nodes i.e objects of RRTNode class
+   */
+  std::vector<RRTNode> getRRTree();
 
   /**
    *   @brief  starts the execution of the RRT planning algorithm
