@@ -1,3 +1,46 @@
+/****************************************************************************
+ * MIT License
+ * Copyright (c) 2018 Srinidhi Sreenath
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ ******************************************************************************/
+
+/**
+ *  @file    InformedRRTStar.cpp
+ *  @author  Srinidhi Sreenath (SrinidhiSreenath)
+ *  @date    10/16/2018
+ *  @version 1.0
+ *
+ *  @brief RRT STar Class definition for the planner
+ *
+ *  @section DESCRIPTION
+ *
+ *  Source file for class Informed RRT Star. The class is used to implement the
+ * faster convergence of the optimized version of the Rapidly-exploring Random
+ * Tree algorithm  (i-RRT*) to find a path from a start point to a given
+ * goal point in a pre-defined environment. Once a path is found from RRT
+ * algorithm, the i-RRT* samples nodes only in the heuristic region around the
+ * path to minimize the cost to come i.e cost to arrive at a given node from
+ * start node with a path in the tree.
+ *
+ */
+
 // Class header file
 #include "InformedRRTStar.hpp"
 
@@ -18,7 +61,9 @@ InformedRRTStar::~InformedRRTStar() {
 
 std::vector<double> InformedRRTStar::generateHeuristicNode() {
   std::vector<double> heuristicNode;
-
+  //  heuristic region is the region around start and goal node defined by an
+  //  ellipse engulfing the path. Here I have approximated a bit by taking the
+  //  square engulfing the ellipse.
   int heuristic = std::sqrt((cmax_ * cmax_ - 0.75 * cmin_ * cmin_));
   heuristicNode.push_back(startNode_[0] + rand() % heuristic);
   heuristicNode.push_back(startNode_[1] + rand() % heuristic);
@@ -88,6 +133,9 @@ void InformedRRTStar::runPlanner() {
             std::hypot((waypoints[iter + 1].first - waypoints[iter].first),
                        (waypoints[iter + 1].second - waypoints[iter].second));
       }
+      // Instead of sampling a random node in the environment, the sampling
+      // takes place in the heuristic region. This accelerates the convergence
+      // of the algorithm.
       randomNode = generateHeuristicNode();
     }
   }
