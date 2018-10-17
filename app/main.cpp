@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "RRT.hpp"
+#include "RRTStar.hpp"
 #include "matplotlibcpp.h"
 
 namespace plt = matplotlibcpp;
@@ -60,7 +61,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
 }
 
 int main() {
-  RRT testPlan;  ///< Initialize Test planner
+  RRTStar testPlan;  ///< Initialize Test planner
 
   std::vector<std::pair<double, double>>
       testBoundary;  ///< variable to hold boundary vertices
