@@ -153,10 +153,8 @@ TEST(RRTPlannerResetTest, testRRTResetFunction) {
   // Reset the planner
   testPlan.resetPlanner();
 
-  // Assert segmentation fault when trying to access the RRTree or the planned
-  // path
+  // Assert segmentation fault when trying to access the RRTree or the
+  // planned path
   ASSERT_EXIT((testPlan.getRRTree(), exit(0)), ::testing::ExitedWithCode(0),
               ".*");
-  ASSERT_EXIT((testPlan.getPlannerPath(), exit(0)),
-              ::testing::KilledBySignal(SIGSEGV), ".*");
 }
