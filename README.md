@@ -2,6 +2,8 @@
 [![Build Status](https://travis-ci.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar.svg?branch=master)](https://travis-ci.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar) [![Coverage Status](https://coveralls.io/repos/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/badge.svg?branch=master)](https://coveralls.io/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar?branch=master) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/master/LICENSE)
 ---
 
+Since there is currently an issue with coveralls updating, the code coverage section explains the method to extract the code_coverage. [Index.html](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/master/index.html) provides the necessary code coverage information.
+
 ## Overview
 
 This repository consists of the C++ implementation of the Informed RRT* algorithm for autonomous navigation. Robotic vacuum
@@ -18,6 +20,11 @@ expansion from randomly drawn samples to grow towards previously unsearchable ar
 an improvement on RRTs, extend the problem to finding the optimal solution in the planning space that is computed 
 asymptotically. Informed RRT* improves the convergence speed of RRT* by introducing a heuristic, similar to the way in which 
 A* improves upon Dijkstra’s algorithm.
+
+## Result
+
+The following image is the result of the informed RRT star algorithm on execution.
+![alt text](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/master/irrtstar.png)
 
 ## Solo Iterative Process (SIP)
 Solo Iterative Process (SIP) is used in the development of the project. Test Driven Development appoach is used to comply with the short development cycle. The planning and development of the project is done in four sprints. 
@@ -88,6 +95,24 @@ make
 make code_coverage
 ```
 This generates a index.html page in the build/coverage sub-directory that can be viewed locally in a web browser.
+
+## Doxygen Documentation
+Doxygen Documentation generation steps:
+```
+cd <path to repository>
+mkdir Doxygen
+cd Doxygen
+doxygen -g <config_file_name>
+```
+Open configuration file and update the following:
+```
+PROJECT_NAME = 'ENPM808X-Midterm-InformedRRTStar'
+INPUT = ../InformedRRTStar ../include ../test
+```
+Run and generate the documents by executing the following:
+```
+doxygen <config_file_name>
+```
 
 ## Working with Eclipse IDE ##
 
