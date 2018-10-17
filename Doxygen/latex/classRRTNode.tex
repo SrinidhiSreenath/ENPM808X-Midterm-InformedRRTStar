@@ -1,0 +1,197 @@
+\hypertarget{classRRTNode}{}\section{R\+R\+T\+Node Class Reference}
+\label{classRRTNode}\index{R\+R\+T\+Node@{R\+R\+T\+Node}}
+
+
+Class \hyperlink{classRRTNode}{R\+R\+T\+Node} The following class \hyperlink{classRRTNode}{R\+R\+T\+Node} is used to hold information of a node in the tree formed by \hyperlink{classRRT}{R\+RT} algorithm.  
+
+
+
+
+{\ttfamily \#include $<$R\+R\+T\+Node.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRRTNode_a450dfa8045c8da49f359790501878106}{R\+R\+T\+Node} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{classRRTNode}{R\+R\+T\+Node}. \end{DoxyCompactList}\item 
+\hyperlink{classRRTNode_a6809e4173f614885337cb9e0f1ab3222}{$\sim$\+R\+R\+T\+Node} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \hyperlink{classRRTNode}{R\+R\+T\+Node}. \end{DoxyCompactList}\item 
+void \hyperlink{classRRTNode_ab1a5aa8a8e7c33fca0cee09c208a2b51}{set\+State} (const double \&x, const double \&y)
+\begin{DoxyCompactList}\small\item\em setter function to set state \mbox{[}x,y\mbox{]} of the node \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{classRRTNode_a73f2b83a8babef45d6336cd512532257}{get\+State} ()
+\begin{DoxyCompactList}\small\item\em function to return state \mbox{[}x,y\mbox{]} of the node \end{DoxyCompactList}\item 
+void \hyperlink{classRRTNode_a168d651956a9d3ff5a97dfc14b2cbff9}{set\+Parent} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \&parent\+Object)
+\begin{DoxyCompactList}\small\item\em setter function to set parent node of the current node \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \hyperlink{classRRTNode_ad53ba7bac9b3119510b6a7b5dc3ac378}{get\+Parent} ()
+\begin{DoxyCompactList}\small\item\em function to return current node\textquotesingle{}s parent node object pointer \end{DoxyCompactList}\item 
+void \hyperlink{classRRTNode_af7986ea058b3a697bf1977903b286edd}{set\+Cost\+To\+Come} (const double \&cost)
+\begin{DoxyCompactList}\small\item\em setter function to set cost to come for the node \end{DoxyCompactList}\item 
+double \hyperlink{classRRTNode_aef17b4bd6901c1b1bfc381f862ebfaa1}{get\+Cost\+To\+Come} ()
+\begin{DoxyCompactList}\small\item\em function to return cost to come of the node \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{classRRTNode}{R\+R\+T\+Node} The following class \hyperlink{classRRTNode}{R\+R\+T\+Node} is used to hold information of a node in the tree formed by \hyperlink{classRRT}{R\+RT} algorithm. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{R\+R\+T\+Node@{R\+R\+T\+Node}!R\+R\+T\+Node@{R\+R\+T\+Node}}
+\index{R\+R\+T\+Node@{R\+R\+T\+Node}!R\+R\+T\+Node@{R\+R\+T\+Node}}
+\subsubsection[{\texorpdfstring{R\+R\+T\+Node()}{RRTNode()}}]{\setlength{\rightskip}{0pt plus 5cm}R\+R\+T\+Node\+::\+R\+R\+T\+Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTNode_a450dfa8045c8da49f359790501878106}{}\label{classRRTNode_a450dfa8045c8da49f359790501878106}
+
+
+Default constructor for \hyperlink{classRRTNode}{R\+R\+T\+Node}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{R\+R\+T\+Node@{R\+R\+T\+Node}!````~R\+R\+T\+Node@{$\sim$\+R\+R\+T\+Node}}
+\index{````~R\+R\+T\+Node@{$\sim$\+R\+R\+T\+Node}!R\+R\+T\+Node@{R\+R\+T\+Node}}
+\subsubsection[{\texorpdfstring{$\sim$\+R\+R\+T\+Node()}{~RRTNode()}}]{\setlength{\rightskip}{0pt plus 5cm}R\+R\+T\+Node\+::$\sim$\+R\+R\+T\+Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTNode_a6809e4173f614885337cb9e0f1ab3222}{}\label{classRRTNode_a6809e4173f614885337cb9e0f1ab3222}
+
+
+Destructor for \hyperlink{classRRTNode}{R\+R\+T\+Node}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{R\+R\+T\+Node@{R\+R\+T\+Node}!get\+Cost\+To\+Come@{get\+Cost\+To\+Come}}
+\index{get\+Cost\+To\+Come@{get\+Cost\+To\+Come}!R\+R\+T\+Node@{R\+R\+T\+Node}}
+\subsubsection[{\texorpdfstring{get\+Cost\+To\+Come()}{getCostToCome()}}]{\setlength{\rightskip}{0pt plus 5cm}double R\+R\+T\+Node\+::get\+Cost\+To\+Come (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTNode_aef17b4bd6901c1b1bfc381f862ebfaa1}{}\label{classRRTNode_aef17b4bd6901c1b1bfc381f862ebfaa1}
+
+
+function to return cost to come of the node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cost\+To\+Come of the node as double 
+\end{DoxyReturn}
+\index{R\+R\+T\+Node@{R\+R\+T\+Node}!get\+Parent@{get\+Parent}}
+\index{get\+Parent@{get\+Parent}!R\+R\+T\+Node@{R\+R\+T\+Node}}
+\subsubsection[{\texorpdfstring{get\+Parent()}{getParent()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf R\+R\+T\+Node}$>$ R\+R\+T\+Node\+::get\+Parent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTNode_ad53ba7bac9b3119510b6a7b5dc3ac378}{}\label{classRRTNode_ad53ba7bac9b3119510b6a7b5dc3ac378}
+
+
+function to return current node\textquotesingle{}s parent node object pointer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a shared\+\_\+ptr to the object of the parent node class 
+\end{DoxyReturn}
+\index{R\+R\+T\+Node@{R\+R\+T\+Node}!get\+State@{get\+State}}
+\index{get\+State@{get\+State}!R\+R\+T\+Node@{R\+R\+T\+Node}}
+\subsubsection[{\texorpdfstring{get\+State()}{getState()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ R\+R\+T\+Node\+::get\+State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTNode_a73f2b83a8babef45d6336cd512532257}{}\label{classRRTNode_a73f2b83a8babef45d6336cd512532257}
+
+
+function to return state \mbox{[}x,y\mbox{]} of the node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of double type points containing state \mbox{[}x,y\mbox{]} 
+\end{DoxyReturn}
+\index{R\+R\+T\+Node@{R\+R\+T\+Node}!set\+Cost\+To\+Come@{set\+Cost\+To\+Come}}
+\index{set\+Cost\+To\+Come@{set\+Cost\+To\+Come}!R\+R\+T\+Node@{R\+R\+T\+Node}}
+\subsubsection[{\texorpdfstring{set\+Cost\+To\+Come(const double \&cost)}{setCostToCome(const double &cost)}}]{\setlength{\rightskip}{0pt plus 5cm}void R\+R\+T\+Node\+::set\+Cost\+To\+Come (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{cost}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTNode_af7986ea058b3a697bf1977903b286edd}{}\label{classRRTNode_af7986ea058b3a697bf1977903b286edd}
+
+
+setter function to set cost to come for the node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cost} & to travel to the current node from start node as double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{R\+R\+T\+Node@{R\+R\+T\+Node}!set\+Parent@{set\+Parent}}
+\index{set\+Parent@{set\+Parent}!R\+R\+T\+Node@{R\+R\+T\+Node}}
+\subsubsection[{\texorpdfstring{set\+Parent(const std\+::shared\+\_\+ptr$<$ R\+R\+T\+Node $>$ \&parent\+Object)}{setParent(const std::shared_ptr< RRTNode > &parentObject)}}]{\setlength{\rightskip}{0pt plus 5cm}void R\+R\+T\+Node\+::set\+Parent (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf R\+R\+T\+Node} $>$ \&}]{parent\+Object}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTNode_a168d651956a9d3ff5a97dfc14b2cbff9}{}\label{classRRTNode_a168d651956a9d3ff5a97dfc14b2cbff9}
+
+
+setter function to set parent node of the current node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Object} & is the pointer to the object of the parent node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{R\+R\+T\+Node@{R\+R\+T\+Node}!set\+State@{set\+State}}
+\index{set\+State@{set\+State}!R\+R\+T\+Node@{R\+R\+T\+Node}}
+\subsubsection[{\texorpdfstring{set\+State(const double \&x, const double \&y)}{setState(const double &x, const double &y)}}]{\setlength{\rightskip}{0pt plus 5cm}void R\+R\+T\+Node\+::set\+State (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{x, }
+\item[{const double \&}]{y}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTNode_ab1a5aa8a8e7c33fca0cee09c208a2b51}{}\label{classRRTNode_ab1a5aa8a8e7c33fca0cee09c208a2b51}
+
+
+setter function to set state \mbox{[}x,y\mbox{]} of the node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & and y are cartesian coordinates in double type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/include/\hyperlink{RRTNode_8hpp}{R\+R\+T\+Node.\+hpp}\end{DoxyCompactItemize}

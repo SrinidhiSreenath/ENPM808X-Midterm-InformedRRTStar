@@ -1,0 +1,107 @@
+\hypertarget{RRTStarTest_8cpp}{}\section{/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/test/\+R\+R\+T\+Star\+Test.cpp File Reference}
+\label{RRTStarTest_8cpp}\index{/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/test/\+R\+R\+T\+Star\+Test.\+cpp@{/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/test/\+R\+R\+T\+Star\+Test.\+cpp}}
+
+
+Unit tests for class \hyperlink{classRRT}{R\+RT}.  
+
+
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include \char`\"{}R\+R\+T\+Star.\+hpp\char`\"{}}\\*
+Include dependency graph for R\+R\+T\+Star\+Test.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{RRTStarTest_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{RRTStarTest_8cpp_a58aa89533582f4016ec61ec168467082}{T\+E\+ST} (R\+R\+T\+Star\+Valid\+Path\+Test, test\+Validity\+Of\+Path\+Given\+By\+The\+R\+R\+T\+Star\+Planner)
+\begin{DoxyCompactList}\small\item\em Test case to check the \hyperlink{classRRT}{R\+RT} Star planner. The test case checks whether the path found is correct based on the following three conditions\+: \end{DoxyCompactList}\item 
+{\bfseries T\+E\+ST} (R\+R\+T\+Star\+Planner\+Reset\+Test, test\+R\+R\+T\+Star\+Reset\+Function)\hypertarget{RRTStarTest_8cpp_aa5c415a782a7869bf80c9f277dda1932}{}\label{RRTStarTest_8cpp_aa5c415a782a7869bf80c9f277dda1932}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRRTStar}{R\+R\+T\+Star} \hyperlink{RRTStarTest_8cpp_a07af0769372e0a44f11b0563caffabe4}{sample\+Plan}
+\begin{DoxyCompactList}\small\item\em Initialize Test planner. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \hyperlink{RRTStarTest_8cpp_aad7540fdc75806d8b12e2771e211377f}{sample\+Boundary}\hypertarget{RRTStarTest_8cpp_aad7540fdc75806d8b12e2771e211377f}{}\label{RRTStarTest_8cpp_aad7540fdc75806d8b12e2771e211377f}
+
+\begin{DoxyCompactList}\small\item\em variable to hold boundary vertices \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{RRTStarTest_8cpp_aa8cc35576c8ac9c1d2e8e3542edabd2b}{sample\+Obstacles}\hypertarget{RRTStarTest_8cpp_aa8cc35576c8ac9c1d2e8e3542edabd2b}{}\label{RRTStarTest_8cpp_aa8cc35576c8ac9c1d2e8e3542edabd2b}
+
+\begin{DoxyCompactList}\small\item\em variable to hold obstacles and their vertices \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit tests for class \hyperlink{classRRT}{R\+RT}. 
+
+\begin{DoxyAuthor}{Author}
+Srinidhi Sreenath (Srinidhi\+Sreenath) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/15/2018 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+\hypertarget{RRTTest_8cpp_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{RRTTest_8cpp_DESCRIPTION}
+Test cases to test the class members of Informed \hyperlink{classRRT}{R\+RT} Star planner.
+
+\begin{DoxyAuthor}{Author}
+Srinidhi Sreenath (Srinidhi\+Sreenath) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/14/2018 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+\hypertarget{RRTTest_8cpp_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{RRTTest_8cpp_DESCRIPTION}
+Test cases to test the class members of \hyperlink{classRRT}{R\+RT} Star planner. 
+
+\subsection{Function Documentation}
+\index{R\+R\+T\+Star\+Test.\+cpp@{R\+R\+T\+Star\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!R\+R\+T\+Star\+Test.\+cpp@{R\+R\+T\+Star\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+R\+R\+T\+Star\+Valid\+Path\+Test, test\+Validity\+Of\+Path\+Given\+By\+The\+R\+R\+T\+Star\+Planner)}{TEST(RRTStarValidPathTest, testValidityOfPathGivenByTheRRTStarPlanner)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{R\+R\+T\+Star\+Valid\+Path\+Test}]{, }
+\item[{test\+Validity\+Of\+Path\+Given\+By\+The\+R\+R\+T\+Star\+Planner}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{RRTStarTest_8cpp_a58aa89533582f4016ec61ec168467082}{}\label{RRTStarTest_8cpp_a58aa89533582f4016ec61ec168467082}
+
+
+Test case to check the \hyperlink{classRRT}{R\+RT} Star planner. The test case checks whether the path found is correct based on the following three conditions\+: 
+
+
+\begin{DoxyEnumerate}
+\item The last waypoint of the path should be the goal node. (i.\+e the goal node is a leaf node in the R\+R\+Tree)
+\item Tracing the parent of the goal node in the tree, the path should end at the start node i.\+e root node
+\item The distance between each waypoint should be within drivable range of the planner
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\index{R\+R\+T\+Star\+Test.\+cpp@{R\+R\+T\+Star\+Test.\+cpp}!sample\+Plan@{sample\+Plan}}
+\index{sample\+Plan@{sample\+Plan}!R\+R\+T\+Star\+Test.\+cpp@{R\+R\+T\+Star\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{sample\+Plan}{samplePlan}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+R\+T\+Star} sample\+Plan}\hypertarget{RRTStarTest_8cpp_a07af0769372e0a44f11b0563caffabe4}{}\label{RRTStarTest_8cpp_a07af0769372e0a44f11b0563caffabe4}
+
+
+Initialize Test planner. 
+
+The following test cases follow similar test cases to class \hyperlink{classRRT}{R\+RT}. Due to the probabilistic nature of the algorithm, a test case to check for optimality cannot pass all the time. Optimality depends on certain factors like max number of iterations, the environment, start and end points etc.
+
+A test case to check for optimality is not currently implemented due to the non deterministic behavior. 

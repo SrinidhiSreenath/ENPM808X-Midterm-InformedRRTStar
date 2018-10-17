@@ -1,0 +1,411 @@
+\hypertarget{classRRT}{}\section{R\+RT Class Reference}
+\label{classRRT}\index{R\+RT@{R\+RT}}
+
+
+Class \hyperlink{classRRT}{R\+RT} The following class \hyperlink{classRRT}{R\+RT} implements the Rapidly-\/exploring random tree to find a path from start to goal in an environment.  
+
+
+
+
+{\ttfamily \#include $<$R\+R\+T.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+RT\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classRRT__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+RT\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=127pt]{classRRT__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRRT_a0a7bb3a3af2d70c656764fbe8f6ae671}{R\+RT} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{classRRT}{R\+RT}. Prints basic information regarding planner. \end{DoxyCompactList}\item 
+\hyperlink{classRRT_ab16d13c231d664dddaf41f904d5770f8}{$\sim$\+R\+RT} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \hyperlink{classRRT}{R\+RT}. \end{DoxyCompactList}\item 
+std\+::pair$<$ size\+\_\+t, double $>$ \hyperlink{classRRT_af036e6c57778da5d017493ee1a2d0d37}{get\+Planner\+Parameters} ()
+\begin{DoxyCompactList}\small\item\em function to return planner parameters \end{DoxyCompactList}\item 
+void \hyperlink{classRRT_a99d47b882000b264f594b374b18c49c0}{set\+Map} (const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&\hyperlink{MapTest_8cpp_ad2559d9d65caf07bc831e905bc151444}{boundary}, const std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&\hyperlink{MapTest_8cpp_ab66426f62219d5ce7554221a370691fe}{obstacles})
+\begin{DoxyCompactList}\small\item\em setter function to define the environment \end{DoxyCompactList}\item 
+virtual void \hyperlink{classRRT_a4954f750e5aedfea24fb52771bd5b1af}{set\+Start\+And\+Goal} (const std\+::vector$<$ double $>$ \&start, const std\+::vector$<$ double $>$ \&goal)
+\begin{DoxyCompactList}\small\item\em setter function to set start and goal point for the \hyperlink{classRRT}{R\+RT} algorithm \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{classRRT_ab85d824e85c9c0e7ed5ee385f5649993}{generate\+Random\+Node} ()
+\begin{DoxyCompactList}\small\item\em samples a random point \mbox{[}x,y\mbox{]} in the map environment \end{DoxyCompactList}\item 
+double \hyperlink{classRRT_a71746e00550593ba81eff895a736bc83}{get\+Euclidean\+Distance} (const std\+::vector$<$ double $>$ \&node, const std\+::vector$<$ double $>$ \&tree\+Node)
+\begin{DoxyCompactList}\small\item\em calculates the euclidean distance between a point and a R\+R\+Tree node \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \hyperlink{classRRT_ae581ca8e7858e75e3958596f9dd57390}{find\+Closest\+Tree\+Node} (const std\+::vector$<$ double $>$ \&random\+Node)
+\begin{DoxyCompactList}\small\item\em finds the closest node in the tree to a given randomly sampled node in the environment \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{classRRT_a819276861e55d3c472c19dd92f4e6d58}{generate\+New\+Node} (const std\+::vector$<$ double $>$ \&random\+Node, const std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \&closest\+Tree\+Node)
+\begin{DoxyCompactList}\small\item\em generates a new node that is reachable from the closest tree node to the randomly sampled node, at a drive/steer distance \end{DoxyCompactList}\item 
+virtual void \hyperlink{classRRT_a2629b145454f54cca6a1ad796c27e900}{append\+R\+R\+Tree} (const std\+::vector$<$ double $>$ \&valid\+Node, const std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \&valid\+Node\+Parent)
+\begin{DoxyCompactList}\small\item\em appends the R\+R\+Tree in the workspace with the new valid node \end{DoxyCompactList}\item 
+bool \hyperlink{classRRT_ae952a5270a03a0dfe49ca110a6a430b7}{is\+Goal\+Reached} (const std\+::vector$<$ double $>$ \&new\+Node)
+\begin{DoxyCompactList}\small\item\em checks if the goal node is within drivable distance from the current tree in the environment \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \hyperlink{classRRT_a35e29366864cebacda5cd52c1febaa73}{get\+Planner\+Path} ()
+\begin{DoxyCompactList}\small\item\em returns a path found by the \hyperlink{classRRT}{R\+RT} algorithm as a set of waypoints \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \hyperlink{classRRT_aba9e08111e7b76cd72acf2d0d4d560ae}{get\+R\+R\+Tree} ()
+\begin{DoxyCompactList}\small\item\em returns the tree resulting from the \hyperlink{classRRT}{R\+RT} algorithm \end{DoxyCompactList}\item 
+virtual void \hyperlink{classRRT_a57a214360eb86fc63d7300bc1ea94fde}{run\+Planner} ()
+\begin{DoxyCompactList}\small\item\em starts the execution of the \hyperlink{classRRT}{R\+RT} planning algorithm \end{DoxyCompactList}\item 
+virtual void \hyperlink{classRRT_a952ef4be01547b013ce5c64d912fe680}{reset\+Planner} ()
+\begin{DoxyCompactList}\small\item\em resets the planner by clearing all member varibles of \hyperlink{classRRT}{R\+RT} class planner object \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{classRRT_a97431b141ce0849f645625c1be1ac198}{start\+Node\+\_\+}\hypertarget{classRRT_a97431b141ce0849f645625c1be1ac198}{}\label{classRRT_a97431b141ce0849f645625c1be1ac198}
+
+\begin{DoxyCompactList}\small\item\em variable to hold the starting node for the algorithm \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{classRRT_a01f224deb0e405704d56735301dca404}{goal\+Node\+\_\+}
+\item 
+\hyperlink{classMap}{Map} \hyperlink{classRRT_a534fd15ee26c5680a17ee3528a9e9b20}{map\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{classRRT}{R\+RT} The following class \hyperlink{classRRT}{R\+RT} implements the Rapidly-\/exploring random tree to find a path from start to goal in an environment. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{R\+RT@{R\+RT}!R\+RT@{R\+RT}}
+\index{R\+RT@{R\+RT}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{R\+R\+T()}{RRT()}}]{\setlength{\rightskip}{0pt plus 5cm}R\+R\+T\+::\+R\+RT (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRT_a0a7bb3a3af2d70c656764fbe8f6ae671}{}\label{classRRT_a0a7bb3a3af2d70c656764fbe8f6ae671}
+
+
+Default constructor for \hyperlink{classRRT}{R\+RT}. Prints basic information regarding planner. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{R\+RT@{R\+RT}!````~R\+RT@{$\sim$\+R\+RT}}
+\index{````~R\+RT@{$\sim$\+R\+RT}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{$\sim$\+R\+R\+T()}{~RRT()}}]{\setlength{\rightskip}{0pt plus 5cm}R\+R\+T\+::$\sim$\+R\+RT (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRT_ab16d13c231d664dddaf41f904d5770f8}{}\label{classRRT_ab16d13c231d664dddaf41f904d5770f8}
+
+
+Destructor for \hyperlink{classRRT}{R\+RT}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{R\+RT@{R\+RT}!append\+R\+R\+Tree@{append\+R\+R\+Tree}}
+\index{append\+R\+R\+Tree@{append\+R\+R\+Tree}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{append\+R\+R\+Tree(const std\+::vector$<$ double $>$ \&valid\+Node, const std\+::shared\+\_\+ptr$<$ R\+R\+T\+Node $>$ \&valid\+Node\+Parent)}{appendRRTree(const std::vector< double > &validNode, const std::shared_ptr< RRTNode > &validNodeParent)}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void R\+R\+T\+::append\+R\+R\+Tree (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{valid\+Node, }
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf R\+R\+T\+Node} $>$ \&}]{valid\+Node\+Parent}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRT_a2629b145454f54cca6a1ad796c27e900}{}\label{classRRT_a2629b145454f54cca6a1ad796c27e900}
+
+
+appends the R\+R\+Tree in the workspace with the new valid node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em valid\+Node} & is the newly generated node at a drivable distance to the current tree in the environment as a vector of double elements \mbox{[}x,y\mbox{]} valid\+Node\+Parent is the pointer to the object of class \hyperlink{classRRT}{R\+RT} pointing to the parent of the valid\+Node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classRRTStar_a3b1f7e66c99881faa190034b0ff2b101}{R\+R\+T\+Star}.
+
+\index{R\+RT@{R\+RT}!find\+Closest\+Tree\+Node@{find\+Closest\+Tree\+Node}}
+\index{find\+Closest\+Tree\+Node@{find\+Closest\+Tree\+Node}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{find\+Closest\+Tree\+Node(const std\+::vector$<$ double $>$ \&random\+Node)}{findClosestTreeNode(const std::vector< double > &randomNode)}}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\+::shared\+\_\+ptr$<${\bf R\+R\+T\+Node}$>$ R\+R\+T\+::find\+Closest\+Tree\+Node (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{random\+Node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRT_ae581ca8e7858e75e3958596f9dd57390}{}\label{classRRT_ae581ca8e7858e75e3958596f9dd57390}
+
+
+finds the closest node in the tree to a given randomly sampled node in the environment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em random\+Node} & is the randomly sampled node in the environment as a vector of double elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A smart pointer (shared\+\_\+ptr) pointing to the object of the closest tree node 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classRRTStar_ac8825e6654bc43d7d82918451e09ea89}{R\+R\+T\+Star}.
+
+\index{R\+RT@{R\+RT}!generate\+New\+Node@{generate\+New\+Node}}
+\index{generate\+New\+Node@{generate\+New\+Node}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{generate\+New\+Node(const std\+::vector$<$ double $>$ \&random\+Node, const std\+::shared\+\_\+ptr$<$ R\+R\+T\+Node $>$ \&closest\+Tree\+Node)}{generateNewNode(const std::vector< double > &randomNode, const std::shared_ptr< RRTNode > &closestTreeNode)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ R\+R\+T\+::generate\+New\+Node (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{random\+Node, }
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf R\+R\+T\+Node} $>$ \&}]{closest\+Tree\+Node}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRT_a819276861e55d3c472c19dd92f4e6d58}{}\label{classRRT_a819276861e55d3c472c19dd92f4e6d58}
+
+
+generates a new node that is reachable from the closest tree node to the randomly sampled node, at a drive/steer distance 
+
+
+\begin{DoxyParams}{Parameters}
+{\em random\+Node} & is the randomly sampled node in the environment as a vector of double elements \mbox{[}x,y\mbox{]} closest\+Tree\+Node is a pointer to the object of class \hyperlink{classRRT}{R\+RT} representing the closest node in the tree to the random node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of double elements representing the new node \mbox{[}x,y\mbox{]} drivable from the tree node 
+\end{DoxyReturn}
+\index{R\+RT@{R\+RT}!generate\+Random\+Node@{generate\+Random\+Node}}
+\index{generate\+Random\+Node@{generate\+Random\+Node}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{generate\+Random\+Node()}{generateRandomNode()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ R\+R\+T\+::generate\+Random\+Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRT_ab85d824e85c9c0e7ed5ee385f5649993}{}\label{classRRT_ab85d824e85c9c0e7ed5ee385f5649993}
+
+
+samples a random point \mbox{[}x,y\mbox{]} in the map environment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector \mbox{[}x,y\mbox{]} as double elements 
+\end{DoxyReturn}
+\index{R\+RT@{R\+RT}!get\+Euclidean\+Distance@{get\+Euclidean\+Distance}}
+\index{get\+Euclidean\+Distance@{get\+Euclidean\+Distance}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{get\+Euclidean\+Distance(const std\+::vector$<$ double $>$ \&node, const std\+::vector$<$ double $>$ \&tree\+Node)}{getEuclideanDistance(const std::vector< double > &node, const std::vector< double > &treeNode)}}]{\setlength{\rightskip}{0pt plus 5cm}double R\+R\+T\+::get\+Euclidean\+Distance (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{node, }
+\item[{const std\+::vector$<$ double $>$ \&}]{tree\+Node}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRT_a71746e00550593ba81eff895a736bc83}{}\label{classRRT_a71746e00550593ba81eff895a736bc83}
+
+
+calculates the euclidean distance between a point and a R\+R\+Tree node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & is a random point in the environment as a vector of double points tree\+Node is a vector of double type representing a node in the R\+R\+Tree \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the euclidean distance between the random node and the tree node as double element 
+\end{DoxyReturn}
+\index{R\+RT@{R\+RT}!get\+Planner\+Parameters@{get\+Planner\+Parameters}}
+\index{get\+Planner\+Parameters@{get\+Planner\+Parameters}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{get\+Planner\+Parameters()}{getPlannerParameters()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$size\+\_\+t, double$>$ R\+R\+T\+::get\+Planner\+Parameters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRT_af036e6c57778da5d017493ee1a2d0d37}{}\label{classRRT_af036e6c57778da5d017493ee1a2d0d37}
+
+
+function to return planner parameters 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pair of values (unsigned int, double) defining the max iterations and drive paramater respectively 
+\end{DoxyReturn}
+\index{R\+RT@{R\+RT}!get\+Planner\+Path@{get\+Planner\+Path}}
+\index{get\+Planner\+Path@{get\+Planner\+Path}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{get\+Planner\+Path()}{getPlannerPath()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\+::vector$<$std\+::pair$<$double, double$>$ $>$ R\+R\+T\+::get\+Planner\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRT_a35e29366864cebacda5cd52c1febaa73}{}\label{classRRT_a35e29366864cebacda5cd52c1febaa73}
+
+
+returns a path found by the \hyperlink{classRRT}{R\+RT} algorithm as a set of waypoints 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of pair of double elements \mbox{[}x,y\mbox{]} representing the set of waypoints 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classRRTStar_a9d415973b5fbafa4435203fb56ac3357}{R\+R\+T\+Star}.
+
+\index{R\+RT@{R\+RT}!get\+R\+R\+Tree@{get\+R\+R\+Tree}}
+\index{get\+R\+R\+Tree@{get\+R\+R\+Tree}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{get\+R\+R\+Tree()}{getRRTree()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf R\+R\+T\+Node}$>$ R\+R\+T\+::get\+R\+R\+Tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRT_aba9e08111e7b76cd72acf2d0d4d560ae}{}\label{classRRT_aba9e08111e7b76cd72acf2d0d4d560ae}
+
+
+returns the tree resulting from the \hyperlink{classRRT}{R\+RT} algorithm 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of nodes i.\+e objects of \hyperlink{classRRTNode}{R\+R\+T\+Node} class 
+\end{DoxyReturn}
+\index{R\+RT@{R\+RT}!is\+Goal\+Reached@{is\+Goal\+Reached}}
+\index{is\+Goal\+Reached@{is\+Goal\+Reached}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{is\+Goal\+Reached(const std\+::vector$<$ double $>$ \&new\+Node)}{isGoalReached(const std::vector< double > &newNode)}}]{\setlength{\rightskip}{0pt plus 5cm}bool R\+R\+T\+::is\+Goal\+Reached (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{new\+Node}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRT_ae952a5270a03a0dfe49ca110a6a430b7}{}\label{classRRT_ae952a5270a03a0dfe49ca110a6a430b7}
+
+
+checks if the goal node is within drivable distance from the current tree in the environment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Node} & is the latest node added to the R\+R\+Tree as a vector of double elements \mbox{[}x,y\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if goal is within drivable range, false otherwise 
+\end{DoxyReturn}
+\index{R\+RT@{R\+RT}!reset\+Planner@{reset\+Planner}}
+\index{reset\+Planner@{reset\+Planner}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{reset\+Planner()}{resetPlanner()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void R\+R\+T\+::reset\+Planner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRT_a952ef4be01547b013ce5c64d912fe680}{}\label{classRRT_a952ef4be01547b013ce5c64d912fe680}
+
+
+resets the planner by clearing all member varibles of \hyperlink{classRRT}{R\+RT} class planner object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classRRTStar_a713736e18edd589d262dd4c2efc1e18d}{R\+R\+T\+Star}, and \hyperlink{classInformedRRTStar_ac13574a2c2a765599ef42283b069a471}{Informed\+R\+R\+T\+Star}.
+
+\index{R\+RT@{R\+RT}!run\+Planner@{run\+Planner}}
+\index{run\+Planner@{run\+Planner}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{run\+Planner()}{runPlanner()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void R\+R\+T\+::run\+Planner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRT_a57a214360eb86fc63d7300bc1ea94fde}{}\label{classRRT_a57a214360eb86fc63d7300bc1ea94fde}
+
+
+starts the execution of the \hyperlink{classRRT}{R\+RT} planning algorithm 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classRRTStar_a5018db145f3a5bb5b4a13b710009ae55}{R\+R\+T\+Star}, and \hyperlink{classInformedRRTStar_afbd7ccc52e9d6dfe734ffcb1bc386234}{Informed\+R\+R\+T\+Star}.
+
+\index{R\+RT@{R\+RT}!set\+Map@{set\+Map}}
+\index{set\+Map@{set\+Map}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{set\+Map(const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&boundary, const std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&obstacles)}{setMap(const std::vector< std::pair< double, double >> &boundary, const std::vector< std::vector< double >> &obstacles)}}]{\setlength{\rightskip}{0pt plus 5cm}void R\+R\+T\+::set\+Map (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&}]{boundary, }
+\item[{const std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{obstacles}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRT_a99d47b882000b264f594b374b18c49c0}{}\label{classRRT_a99d47b882000b264f594b374b18c49c0}
+
+
+setter function to define the environment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em boundary} & is a vector of paired points \mbox{[}x,y\mbox{]} defining the boundary vertices. obstacles is a vector of obstacle container which in turn is a vector of double points \mbox{[}x1,y1,x2,y2...xN,yN\mbox{]} defining the boundary vertices of an obstacle in the environment. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{R\+RT@{R\+RT}!set\+Start\+And\+Goal@{set\+Start\+And\+Goal}}
+\index{set\+Start\+And\+Goal@{set\+Start\+And\+Goal}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{set\+Start\+And\+Goal(const std\+::vector$<$ double $>$ \&start, const std\+::vector$<$ double $>$ \&goal)}{setStartAndGoal(const std::vector< double > &start, const std::vector< double > &goal)}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void R\+R\+T\+::set\+Start\+And\+Goal (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{start, }
+\item[{const std\+::vector$<$ double $>$ \&}]{goal}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRT_a4954f750e5aedfea24fb52771bd5b1af}{}\label{classRRT_a4954f750e5aedfea24fb52771bd5b1af}
+
+
+setter function to set start and goal point for the \hyperlink{classRRT}{R\+RT} algorithm 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & defines the start point as a vector \mbox{[}x,y\mbox{]} of double elements goal defines the goal point as a vector \mbox{[}x,y\mbox{]} of double elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classRRTStar_a1205f9b17419186be4a575151e68f304}{R\+R\+T\+Star}.
+
+
+
+\subsection{Member Data Documentation}
+\index{R\+RT@{R\+RT}!goal\+Node\+\_\+@{goal\+Node\+\_\+}}
+\index{goal\+Node\+\_\+@{goal\+Node\+\_\+}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{goal\+Node\+\_\+}{goalNode_}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ R\+R\+T\+::goal\+Node\+\_\+}\hypertarget{classRRT_a01f224deb0e405704d56735301dca404}{}\label{classRRT_a01f224deb0e405704d56735301dca404}
+variable to hold the goal node where the algorithm terminates \index{R\+RT@{R\+RT}!map\+\_\+@{map\+\_\+}}
+\index{map\+\_\+@{map\+\_\+}!R\+RT@{R\+RT}}
+\subsubsection[{\texorpdfstring{map\+\_\+}{map_}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Map} R\+R\+T\+::map\+\_\+}\hypertarget{classRRT_a534fd15ee26c5680a17ee3528a9e9b20}{}\label{classRRT_a534fd15ee26c5680a17ee3528a9e9b20}
+object of class \hyperlink{classMap}{Map} to hold the information regarding the environment 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/include/\hyperlink{RRT_8hpp}{R\+R\+T.\+hpp}\end{DoxyCompactItemize}

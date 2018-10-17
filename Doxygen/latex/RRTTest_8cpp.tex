@@ -1,0 +1,83 @@
+\hypertarget{RRTTest_8cpp}{}\section{/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/test/\+R\+R\+T\+Test.cpp File Reference}
+\label{RRTTest_8cpp}\index{/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/test/\+R\+R\+T\+Test.\+cpp@{/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/test/\+R\+R\+T\+Test.\+cpp}}
+
+
+Unit tests for class \hyperlink{classRRT}{R\+RT}.  
+
+
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include \char`\"{}R\+R\+T.\+hpp\char`\"{}}\\*
+Include dependency graph for R\+R\+T\+Test.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{RRTTest_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{RRTTest_8cpp_a41d9096b6c18bdea63f68836223c766d}{T\+E\+ST} (R\+R\+T\+Valid\+Path\+Test, test\+Validity\+Of\+Path\+Given\+By\+The\+R\+R\+T\+Planner)
+\begin{DoxyCompactList}\small\item\em Test case to check the \hyperlink{classRRT}{R\+RT} planner. The test case checks whether the path found is correct based on the following three conditions\+: \end{DoxyCompactList}\item 
+{\bfseries T\+E\+ST} (R\+R\+T\+Planner\+Reset\+Test, test\+R\+R\+T\+Reset\+Function)\hypertarget{RRTTest_8cpp_a4c3e1f3bfcef8286f2e021e22e0bb48a}{}\label{RRTTest_8cpp_a4c3e1f3bfcef8286f2e021e22e0bb48a}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRRT}{R\+RT} \hyperlink{RRTTest_8cpp_a39f825702d1861c4cf1b2810c9497231}{test\+Plan}\hypertarget{RRTTest_8cpp_a39f825702d1861c4cf1b2810c9497231}{}\label{RRTTest_8cpp_a39f825702d1861c4cf1b2810c9497231}
+
+\begin{DoxyCompactList}\small\item\em Initialize Test planner. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \hyperlink{RRTTest_8cpp_a95c04c5421f1ce2f9506c71f8757a1e6}{test\+Boundary}\hypertarget{RRTTest_8cpp_a95c04c5421f1ce2f9506c71f8757a1e6}{}\label{RRTTest_8cpp_a95c04c5421f1ce2f9506c71f8757a1e6}
+
+\begin{DoxyCompactList}\small\item\em variable to hold boundary vertices \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{RRTTest_8cpp_ae79b830cfb3725148a4ad66fb38764c7}{test\+Obstacles}\hypertarget{RRTTest_8cpp_ae79b830cfb3725148a4ad66fb38764c7}{}\label{RRTTest_8cpp_ae79b830cfb3725148a4ad66fb38764c7}
+
+\begin{DoxyCompactList}\small\item\em variable to hold obstacles and their vertices \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit tests for class \hyperlink{classRRT}{R\+RT}. 
+
+\begin{DoxyAuthor}{Author}
+Srinidhi Sreenath (Srinidhi\+Sreenath) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/13/2018 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+\hypertarget{RRTTest_8cpp_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{RRTTest_8cpp_DESCRIPTION}
+Test cases to test the class members of \hyperlink{classRRT}{R\+RT} planner. 
+
+\subsection{Function Documentation}
+\index{R\+R\+T\+Test.\+cpp@{R\+R\+T\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!R\+R\+T\+Test.\+cpp@{R\+R\+T\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+R\+R\+T\+Valid\+Path\+Test, test\+Validity\+Of\+Path\+Given\+By\+The\+R\+R\+T\+Planner)}{TEST(RRTValidPathTest, testValidityOfPathGivenByTheRRTPlanner)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{R\+R\+T\+Valid\+Path\+Test}]{, }
+\item[{test\+Validity\+Of\+Path\+Given\+By\+The\+R\+R\+T\+Planner}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{RRTTest_8cpp_a41d9096b6c18bdea63f68836223c766d}{}\label{RRTTest_8cpp_a41d9096b6c18bdea63f68836223c766d}
+
+
+Test case to check the \hyperlink{classRRT}{R\+RT} planner. The test case checks whether the path found is correct based on the following three conditions\+: 
+
+
+\begin{DoxyEnumerate}
+\item The last waypoint of the path should be the goal node. (i.\+e the goal node is a leaf node in the R\+R\+Tree)
+\item Tracing the parent of the goal node in the tree, the path should end at the start node i.\+e root node
+\item The distance between each waypoint should be within drivable range of the planner
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}

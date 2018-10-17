@@ -1,0 +1,385 @@
+\hypertarget{classRRTStar}{}\section{R\+R\+T\+Star Class Reference}
+\label{classRRTStar}\index{R\+R\+T\+Star@{R\+R\+T\+Star}}
+
+
+Class \hyperlink{classRRT}{R\+RT}, derived from class \hyperlink{classRRT}{R\+RT} The following class \hyperlink{classRRT}{R\+RT} Star optimizes the path found by \hyperlink{classRRT}{R\+RT} algorithm using cost to come to rewire the path and the tree nodes as well.  
+
+
+
+
+{\ttfamily \#include $<$R\+R\+T\+Star.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+R\+T\+Star\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classRRTStar__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+R\+T\+Star\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=136pt]{classRRTStar__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRRTStar_aa3305dbcb77c5c47166fdfbc14817802}{R\+R\+T\+Star} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{classRRT}{R\+RT} Star. Prints basic information regarding planner. \end{DoxyCompactList}\item 
+\hyperlink{classRRTStar_adbaa4004aaff73307684524b9a3a8c27}{$\sim$\+R\+R\+T\+Star} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \hyperlink{classRRT}{R\+RT} Star. \end{DoxyCompactList}\item 
+std\+::pair$<$ size\+\_\+t, double $>$ \hyperlink{classRRTStar_ae2b78463af6072b4f7efa5188a530d54}{get\+Planner\+Params} ()
+\begin{DoxyCompactList}\small\item\em function to return \hyperlink{classRRT}{R\+RT} star planner parameters \end{DoxyCompactList}\item 
+void \hyperlink{classRRTStar_a1205f9b17419186be4a575151e68f304}{set\+Start\+And\+Goal} (const std\+::vector$<$ double $>$ \&start, const std\+::vector$<$ double $>$ \&goal)
+\begin{DoxyCompactList}\small\item\em setter function to define the environment \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \hyperlink{classRRTStar_ac8825e6654bc43d7d82918451e09ea89}{find\+Closest\+Tree\+Node} (const std\+::vector$<$ double $>$ \&random\+Node)
+\begin{DoxyCompactList}\small\item\em finds the closest node in the tree to a given randomly sampled node in the environment \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \hyperlink{classRRTStar_a6758b1eeb5b6d2f883d710a9bf8d2387}{rewire\+R\+R\+Tree} (const std\+::vector$<$ double $>$ \&new\+Node, std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \&current\+Parent)
+\begin{DoxyCompactList}\small\item\em finds out if a better parent exists based on cummulative cost to come (cost to arrive a the node from start node) for a given node \end{DoxyCompactList}\item 
+void \hyperlink{classRRTStar_a3b1f7e66c99881faa190034b0ff2b101}{append\+R\+R\+Tree} (const std\+::vector$<$ double $>$ \&valid\+Node, const std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \&valid\+Node\+Parent)
+\begin{DoxyCompactList}\small\item\em appends the R\+R\+T\+Star\+Tree in the workspace with the new valid node \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \hyperlink{classRRTStar_a9d415973b5fbafa4435203fb56ac3357}{get\+Planner\+Path} ()
+\begin{DoxyCompactList}\small\item\em returns a path found by the \hyperlink{classRRT}{R\+RT} Star algorithm as a set of waypoints \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \hyperlink{classRRTStar_a859d863be7b83876119f89b8bc8c671e}{get\+Goal\+Node\+Ptr} ()
+\begin{DoxyCompactList}\small\item\em returns a pointer to the object of goal node \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \hyperlink{classRRTStar_ad63c0ccb78ae3bbd9c4e8b58f6299abe}{get\+R\+R\+T\+Star\+Tree} ()
+\begin{DoxyCompactList}\small\item\em returns the tree resulting from the \hyperlink{classRRT}{R\+RT} Star algorithm \end{DoxyCompactList}\item 
+virtual void \hyperlink{classRRTStar_a5018db145f3a5bb5b4a13b710009ae55}{run\+Planner} ()
+\begin{DoxyCompactList}\small\item\em starts the execution of the \hyperlink{classRRT}{R\+RT} Star planning algorithm \end{DoxyCompactList}\item 
+virtual void \hyperlink{classRRTStar_a713736e18edd589d262dd4c2efc1e18d}{reset\+Planner} ()
+\begin{DoxyCompactList}\small\item\em resets the planner by clearing all member varibles of \hyperlink{classRRT}{R\+RT} Star class planner object \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \hyperlink{classRRTStar_a51cf408ef0d76ee5ee82726fc7bd26a5}{R\+R\+T\+Star\+Tree}
+\begin{DoxyCompactList}\small\item\em Define the datastructure to hold the tree. \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{classRRTStar_a08084959938e25bff534134845d42e14}{max\+Iterations\+\_\+}
+\item 
+const double \hyperlink{classRRTStar_a9a7ceb082951fc07e20f6704fbb1c58e}{rewire\+Range\+\_\+}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ $>$ \hyperlink{classRRTStar_a6a887af80bd8006376389011f27f7cba}{rewire\+Nodes\+\_\+}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classRRTNode}{R\+R\+T\+Node} $>$ \hyperlink{classRRTStar_a32f7b15e9ea09994a696310bca09bc19}{goal\+Node\+Ptr}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{classRRT}{R\+RT}, derived from class \hyperlink{classRRT}{R\+RT} The following class \hyperlink{classRRT}{R\+RT} Star optimizes the path found by \hyperlink{classRRT}{R\+RT} algorithm using cost to come to rewire the path and the tree nodes as well. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{R\+R\+T\+Star()}{RRTStar()}}]{\setlength{\rightskip}{0pt plus 5cm}R\+R\+T\+Star\+::\+R\+R\+T\+Star (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTStar_aa3305dbcb77c5c47166fdfbc14817802}{}\label{classRRTStar_aa3305dbcb77c5c47166fdfbc14817802}
+
+
+Default constructor for \hyperlink{classRRT}{R\+RT} Star. Prints basic information regarding planner. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!````~R\+R\+T\+Star@{$\sim$\+R\+R\+T\+Star}}
+\index{````~R\+R\+T\+Star@{$\sim$\+R\+R\+T\+Star}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{$\sim$\+R\+R\+T\+Star()}{~RRTStar()}}]{\setlength{\rightskip}{0pt plus 5cm}R\+R\+T\+Star\+::$\sim$\+R\+R\+T\+Star (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTStar_adbaa4004aaff73307684524b9a3a8c27}{}\label{classRRTStar_adbaa4004aaff73307684524b9a3a8c27}
+
+
+Destructor for \hyperlink{classRRT}{R\+RT} Star. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!append\+R\+R\+Tree@{append\+R\+R\+Tree}}
+\index{append\+R\+R\+Tree@{append\+R\+R\+Tree}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{append\+R\+R\+Tree(const std\+::vector$<$ double $>$ \&valid\+Node, const std\+::shared\+\_\+ptr$<$ R\+R\+T\+Node $>$ \&valid\+Node\+Parent)}{appendRRTree(const std::vector< double > &validNode, const std::shared_ptr< RRTNode > &validNodeParent)}}]{\setlength{\rightskip}{0pt plus 5cm}void R\+R\+T\+Star\+::append\+R\+R\+Tree (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{valid\+Node, }
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf R\+R\+T\+Node} $>$ \&}]{valid\+Node\+Parent}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRTStar_a3b1f7e66c99881faa190034b0ff2b101}{}\label{classRRTStar_a3b1f7e66c99881faa190034b0ff2b101}
+
+
+appends the R\+R\+T\+Star\+Tree in the workspace with the new valid node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em valid\+Node} & is the newly generated node at a drivable distance to the current tree in the environment as a vector of double elements \mbox{[}x,y\mbox{]} valid\+Node\+Parent is the pointer to the object of class \hyperlink{classRRT}{R\+RT} pointing to the parent of the valid\+Node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classRRT_a2629b145454f54cca6a1ad796c27e900}{R\+RT}.
+
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!find\+Closest\+Tree\+Node@{find\+Closest\+Tree\+Node}}
+\index{find\+Closest\+Tree\+Node@{find\+Closest\+Tree\+Node}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{find\+Closest\+Tree\+Node(const std\+::vector$<$ double $>$ \&random\+Node)}{findClosestTreeNode(const std::vector< double > &randomNode)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf R\+R\+T\+Node}$>$ R\+R\+T\+Star\+::find\+Closest\+Tree\+Node (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{random\+Node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRTStar_ac8825e6654bc43d7d82918451e09ea89}{}\label{classRRTStar_ac8825e6654bc43d7d82918451e09ea89}
+
+
+finds the closest node in the tree to a given randomly sampled node in the environment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em random\+Node} & is the randomly sampled node in the environment as a vector of double elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A smart pointer (shared\+\_\+ptr) pointing to the object of the closest tree node 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classRRT_ae581ca8e7858e75e3958596f9dd57390}{R\+RT}.
+
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!get\+Goal\+Node\+Ptr@{get\+Goal\+Node\+Ptr}}
+\index{get\+Goal\+Node\+Ptr@{get\+Goal\+Node\+Ptr}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{get\+Goal\+Node\+Ptr()}{getGoalNodePtr()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf R\+R\+T\+Node}$>$ R\+R\+T\+Star\+::get\+Goal\+Node\+Ptr (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTStar_a859d863be7b83876119f89b8bc8c671e}{}\label{classRRTStar_a859d863be7b83876119f89b8bc8c671e}
+
+
+returns a pointer to the object of goal node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer pointing to the object of class \hyperlink{classRRTNode}{R\+R\+T\+Node} containing the goal node 
+\end{DoxyReturn}
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!get\+Planner\+Params@{get\+Planner\+Params}}
+\index{get\+Planner\+Params@{get\+Planner\+Params}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{get\+Planner\+Params()}{getPlannerParams()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$size\+\_\+t, double$>$ R\+R\+T\+Star\+::get\+Planner\+Params (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTStar_ae2b78463af6072b4f7efa5188a530d54}{}\label{classRRTStar_ae2b78463af6072b4f7efa5188a530d54}
+
+
+function to return \hyperlink{classRRT}{R\+RT} star planner parameters 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pair of values (unsigned int, double) defining the max iterations and drive paramater respectively 
+\end{DoxyReturn}
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!get\+Planner\+Path@{get\+Planner\+Path}}
+\index{get\+Planner\+Path@{get\+Planner\+Path}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{get\+Planner\+Path()}{getPlannerPath()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::pair$<$double, double$>$ $>$ R\+R\+T\+Star\+::get\+Planner\+Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRTStar_a9d415973b5fbafa4435203fb56ac3357}{}\label{classRRTStar_a9d415973b5fbafa4435203fb56ac3357}
+
+
+returns a path found by the \hyperlink{classRRT}{R\+RT} Star algorithm as a set of waypoints 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of pair of double elements \mbox{[}x,y\mbox{]} representing the set of waypoints 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classRRT_a35e29366864cebacda5cd52c1febaa73}{R\+RT}.
+
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!get\+R\+R\+T\+Star\+Tree@{get\+R\+R\+T\+Star\+Tree}}
+\index{get\+R\+R\+T\+Star\+Tree@{get\+R\+R\+T\+Star\+Tree}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{get\+R\+R\+T\+Star\+Tree()}{getRRTStarTree()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf R\+R\+T\+Node}$>$ R\+R\+T\+Star\+::get\+R\+R\+T\+Star\+Tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTStar_ad63c0ccb78ae3bbd9c4e8b58f6299abe}{}\label{classRRTStar_ad63c0ccb78ae3bbd9c4e8b58f6299abe}
+
+
+returns the tree resulting from the \hyperlink{classRRT}{R\+RT} Star algorithm 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of nodes i.\+e objects of \hyperlink{classRRTNode}{R\+R\+T\+Node} class 
+\end{DoxyReturn}
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!reset\+Planner@{reset\+Planner}}
+\index{reset\+Planner@{reset\+Planner}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{reset\+Planner()}{resetPlanner()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void R\+R\+T\+Star\+::reset\+Planner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRTStar_a713736e18edd589d262dd4c2efc1e18d}{}\label{classRRTStar_a713736e18edd589d262dd4c2efc1e18d}
+
+
+resets the planner by clearing all member varibles of \hyperlink{classRRT}{R\+RT} Star class planner object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classRRT_a952ef4be01547b013ce5c64d912fe680}{R\+RT}.
+
+
+
+Reimplemented in \hyperlink{classInformedRRTStar_ac13574a2c2a765599ef42283b069a471}{Informed\+R\+R\+T\+Star}.
+
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!rewire\+R\+R\+Tree@{rewire\+R\+R\+Tree}}
+\index{rewire\+R\+R\+Tree@{rewire\+R\+R\+Tree}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{rewire\+R\+R\+Tree(const std\+::vector$<$ double $>$ \&new\+Node, std\+::shared\+\_\+ptr$<$ R\+R\+T\+Node $>$ \&current\+Parent)}{rewireRRTree(const std::vector< double > &newNode, std::shared_ptr< RRTNode > &currentParent)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf R\+R\+T\+Node}$>$ R\+R\+T\+Star\+::rewire\+R\+R\+Tree (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{new\+Node, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf R\+R\+T\+Node} $>$ \&}]{current\+Parent}
+\end{DoxyParamCaption}
+)}\hypertarget{classRRTStar_a6758b1eeb5b6d2f883d710a9bf8d2387}{}\label{classRRTStar_a6758b1eeb5b6d2f883d710a9bf8d2387}
+
+
+finds out if a better parent exists based on cummulative cost to come (cost to arrive a the node from start node) for a given node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Node} & is the latest node added to the tree as a vector of double elements current\+Parent is the pointer to parent object of new\+Node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A smart pointer (shared\+\_\+ptr) pointing to the object of the parent node which minimizes the cost to come for the new\+Node 
+\end{DoxyReturn}
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!run\+Planner@{run\+Planner}}
+\index{run\+Planner@{run\+Planner}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{run\+Planner()}{runPlanner()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void R\+R\+T\+Star\+::run\+Planner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRTStar_a5018db145f3a5bb5b4a13b710009ae55}{}\label{classRRTStar_a5018db145f3a5bb5b4a13b710009ae55}
+
+
+starts the execution of the \hyperlink{classRRT}{R\+RT} Star planning algorithm 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classRRT_a57a214360eb86fc63d7300bc1ea94fde}{R\+RT}.
+
+
+
+Reimplemented in \hyperlink{classInformedRRTStar_afbd7ccc52e9d6dfe734ffcb1bc386234}{Informed\+R\+R\+T\+Star}.
+
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!set\+Start\+And\+Goal@{set\+Start\+And\+Goal}}
+\index{set\+Start\+And\+Goal@{set\+Start\+And\+Goal}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{set\+Start\+And\+Goal(const std\+::vector$<$ double $>$ \&start, const std\+::vector$<$ double $>$ \&goal)}{setStartAndGoal(const std::vector< double > &start, const std::vector< double > &goal)}}]{\setlength{\rightskip}{0pt plus 5cm}void R\+R\+T\+Star\+::set\+Start\+And\+Goal (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{start, }
+\item[{const std\+::vector$<$ double $>$ \&}]{goal}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classRRTStar_a1205f9b17419186be4a575151e68f304}{}\label{classRRTStar_a1205f9b17419186be4a575151e68f304}
+
+
+setter function to define the environment 
+
+
+\begin{DoxyParams}{Parameters}
+{\em boundary} & is a vector of paired points \mbox{[}x,y\mbox{]} defining the boundary vertices. obstacles is a vector of obstacle container which in turn is a vector of double points \mbox{[}x1,y1,x2,y2...xN,yN\mbox{]} defining the boundary vertices of an obstacle in the environment. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classRRT_a4954f750e5aedfea24fb52771bd5b1af}{R\+RT}.
+
+
+
+\subsection{Member Data Documentation}
+\index{R\+R\+T\+Star@{R\+R\+T\+Star}!goal\+Node\+Ptr@{goal\+Node\+Ptr}}
+\index{goal\+Node\+Ptr@{goal\+Node\+Ptr}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{goal\+Node\+Ptr}{goalNodePtr}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf R\+R\+T\+Node}$>$ R\+R\+T\+Star\+::goal\+Node\+Ptr}\hypertarget{classRRTStar_a32f7b15e9ea09994a696310bca09bc19}{}\label{classRRTStar_a32f7b15e9ea09994a696310bca09bc19}
+Pointer to the object of class \hyperlink{classRRTNode}{R\+R\+T\+Node} denoting the goal node \index{R\+R\+T\+Star@{R\+R\+T\+Star}!max\+Iterations\+\_\+@{max\+Iterations\+\_\+}}
+\index{max\+Iterations\+\_\+@{max\+Iterations\+\_\+}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{max\+Iterations\+\_\+}{maxIterations_}}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t R\+R\+T\+Star\+::max\+Iterations\+\_\+}\hypertarget{classRRTStar_a08084959938e25bff534134845d42e14}{}\label{classRRTStar_a08084959938e25bff534134845d42e14}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      plannerParams\_.first
+\end{DoxyCode}
+Max iterations the algorithm runs for. Same as parent class \hyperlink{classRRT}{R\+RT}. \index{R\+R\+T\+Star@{R\+R\+T\+Star}!rewire\+Nodes\+\_\+@{rewire\+Nodes\+\_\+}}
+\index{rewire\+Nodes\+\_\+@{rewire\+Nodes\+\_\+}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{rewire\+Nodes\+\_\+}{rewireNodes_}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf R\+R\+T\+Node}$>$ $>$ R\+R\+T\+Star\+::rewire\+Nodes\+\_\+}\hypertarget{classRRTStar_a6a887af80bd8006376389011f27f7cba}{}\label{classRRTStar_a6a887af80bd8006376389011f27f7cba}
+Vector to hold possible rewirable nodes for a given node \index{R\+R\+T\+Star@{R\+R\+T\+Star}!rewire\+Range\+\_\+@{rewire\+Range\+\_\+}}
+\index{rewire\+Range\+\_\+@{rewire\+Range\+\_\+}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{rewire\+Range\+\_\+}{rewireRange_}}]{\setlength{\rightskip}{0pt plus 5cm}const double R\+R\+T\+Star\+::rewire\+Range\+\_\+}\hypertarget{classRRTStar_a9a7ceb082951fc07e20f6704fbb1c58e}{}\label{classRRTStar_a9a7ceb082951fc07e20f6704fbb1c58e}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      2.0 * plannerParams\_.second
+\end{DoxyCode}
+Range around a node to check for possible new parent to rewire to \index{R\+R\+T\+Star@{R\+R\+T\+Star}!R\+R\+T\+Star\+Tree@{R\+R\+T\+Star\+Tree}}
+\index{R\+R\+T\+Star\+Tree@{R\+R\+T\+Star\+Tree}!R\+R\+T\+Star@{R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{R\+R\+T\+Star\+Tree}{RRTStarTree}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf R\+R\+T\+Node}$>$ R\+R\+T\+Star\+::\+R\+R\+T\+Star\+Tree}\hypertarget{classRRTStar_a51cf408ef0d76ee5ee82726fc7bd26a5}{}\label{classRRTStar_a51cf408ef0d76ee5ee82726fc7bd26a5}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      \hyperlink{classRRT_aba9e08111e7b76cd72acf2d0d4d560ae}{getRRTree}()
+\end{DoxyCode}
+
+
+Define the datastructure to hold the tree. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/include/\hyperlink{RRTStar_8hpp}{R\+R\+T\+Star.\+hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,163 @@
+\hypertarget{MapTest_8cpp}{}\section{/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/test/\+Map\+Test.cpp File Reference}
+\label{MapTest_8cpp}\index{/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/test/\+Map\+Test.\+cpp@{/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/test/\+Map\+Test.\+cpp}}
+
+
+Unit tests for class \hyperlink{classMap}{Map}.  
+
+
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}map.\+hpp\char`\"{}}\\*
+Include dependency graph for Map\+Test.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{MapTest_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{MapTest_8cpp_af2cc01b31d84350d76e842fe906f9c26}{T\+E\+ST} (Map\+Initialization\+Test1, test\+Set\+Map\+Workspace\+Boundary)
+\begin{DoxyCompactList}\small\item\em Test case to check setting workspace boundary. \end{DoxyCompactList}\item 
+\hyperlink{MapTest_8cpp_a3de69499ba2b105cf0b61d4a72489fd8}{T\+E\+ST} (Map\+Initialization\+Test2, test\+Add\+Obsatcles\+To\+Map)
+\begin{DoxyCompactList}\small\item\em Test case to check setting obstacles. \end{DoxyCompactList}\item 
+\hyperlink{MapTest_8cpp_a536f73731ed841aeb7d34ad791c57a14}{T\+E\+ST} (Map\+Valid\+Node\+Test1, test\+Valid\+Node\+Based\+On\+Boundary)
+\begin{DoxyCompactList}\small\item\em Test case to check is\+Outof\+Map member function output based on input node. \end{DoxyCompactList}\item 
+\hyperlink{MapTest_8cpp_a870a7b0e1d38c9e572e68a5b29a99d2e}{T\+E\+ST} (Map\+Valid\+Node\+Test2, test\+Valid\+Connection\+To\+Tree\+Node)
+\begin{DoxyCompactList}\small\item\em Test case to check is\+Valid\+Node member function output based on input node. \end{DoxyCompactList}\item 
+\hyperlink{MapTest_8cpp_a379a61468326f6a5e60eefeb87c20c84}{T\+E\+ST} (Map\+Reset\+Test, test\+Map\+Reset\+Function)
+\begin{DoxyCompactList}\small\item\em Test case to check resetting map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMap}{Map} \hyperlink{MapTest_8cpp_a5c84b62dfdeebcc95f6344dbccff893b}{sample\+Map}\hypertarget{MapTest_8cpp_a5c84b62dfdeebcc95f6344dbccff893b}{}\label{MapTest_8cpp_a5c84b62dfdeebcc95f6344dbccff893b}
+
+\begin{DoxyCompactList}\small\item\em class object \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \hyperlink{MapTest_8cpp_ad2559d9d65caf07bc831e905bc151444}{boundary}\hypertarget{MapTest_8cpp_ad2559d9d65caf07bc831e905bc151444}{}\label{MapTest_8cpp_ad2559d9d65caf07bc831e905bc151444}
+
+\begin{DoxyCompactList}\small\item\em variable to hold boundary vertices \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{MapTest_8cpp_ab66426f62219d5ce7554221a370691fe}{obstacles}\hypertarget{MapTest_8cpp_ab66426f62219d5ce7554221a370691fe}{}\label{MapTest_8cpp_ab66426f62219d5ce7554221a370691fe}
+
+\begin{DoxyCompactList}\small\item\em variable to hold obstacles and their vertices \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit tests for class \hyperlink{classMap}{Map}. 
+
+\begin{DoxyAuthor}{Author}
+Srinidhi Sreenath (Srinidhi\+Sreenath) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/8/2018 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+\hypertarget{RRTTest_8cpp_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{RRTTest_8cpp_DESCRIPTION}
+Test cases to test member functions of class \hyperlink{classMap}{Map}. 
+
+\subsection{Function Documentation}
+\index{Map\+Test.\+cpp@{Map\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Map\+Test.\+cpp@{Map\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Map\+Initialization\+Test1, test\+Set\+Map\+Workspace\+Boundary)}{TEST(MapInitializationTest1, testSetMapWorkspaceBoundary)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Map\+Initialization\+Test1}]{, }
+\item[{test\+Set\+Map\+Workspace\+Boundary}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{MapTest_8cpp_af2cc01b31d84350d76e842fe906f9c26}{}\label{MapTest_8cpp_af2cc01b31d84350d76e842fe906f9c26}
+
+
+Test case to check setting workspace boundary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{Map\+Test.\+cpp@{Map\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Map\+Test.\+cpp@{Map\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Map\+Initialization\+Test2, test\+Add\+Obsatcles\+To\+Map)}{TEST(MapInitializationTest2, testAddObsatclesToMap)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Map\+Initialization\+Test2}]{, }
+\item[{test\+Add\+Obsatcles\+To\+Map}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{MapTest_8cpp_a3de69499ba2b105cf0b61d4a72489fd8}{}\label{MapTest_8cpp_a3de69499ba2b105cf0b61d4a72489fd8}
+
+
+Test case to check setting obstacles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{Map\+Test.\+cpp@{Map\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Map\+Test.\+cpp@{Map\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Map\+Valid\+Node\+Test1, test\+Valid\+Node\+Based\+On\+Boundary)}{TEST(MapValidNodeTest1, testValidNodeBasedOnBoundary)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Map\+Valid\+Node\+Test1}]{, }
+\item[{test\+Valid\+Node\+Based\+On\+Boundary}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{MapTest_8cpp_a536f73731ed841aeb7d34ad791c57a14}{}\label{MapTest_8cpp_a536f73731ed841aeb7d34ad791c57a14}
+
+
+Test case to check is\+Outof\+Map member function output based on input node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+$<$ sample node within boundary
+
+$<$ sample node outside boundary \index{Map\+Test.\+cpp@{Map\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Map\+Test.\+cpp@{Map\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Map\+Valid\+Node\+Test2, test\+Valid\+Connection\+To\+Tree\+Node)}{TEST(MapValidNodeTest2, testValidConnectionToTreeNode)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Map\+Valid\+Node\+Test2}]{, }
+\item[{test\+Valid\+Connection\+To\+Tree\+Node}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{MapTest_8cpp_a870a7b0e1d38c9e572e68a5b29a99d2e}{}\label{MapTest_8cpp_a870a7b0e1d38c9e572e68a5b29a99d2e}
+
+
+Test case to check is\+Valid\+Node member function output based on input node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{Map\+Test.\+cpp@{Map\+Test.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!Map\+Test.\+cpp@{Map\+Test.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+Map\+Reset\+Test, test\+Map\+Reset\+Function)}{TEST(MapResetTest, testMapResetFunction)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{Map\+Reset\+Test}]{, }
+\item[{test\+Map\+Reset\+Function}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{MapTest_8cpp_a379a61468326f6a5e60eefeb87c20c84}{}\label{MapTest_8cpp_a379a61468326f6a5e60eefeb87c20c84}
+
+
+Test case to check resetting map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+$<$ unsigned variable to compare sizes 

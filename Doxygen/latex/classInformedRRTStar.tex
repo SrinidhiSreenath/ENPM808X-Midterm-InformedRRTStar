@@ -1,0 +1,162 @@
+\hypertarget{classInformedRRTStar}{}\section{Informed\+R\+R\+T\+Star Class Reference}
+\label{classInformedRRTStar}\index{Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}}
+
+
+Class Informed \hyperlink{classRRT}{R\+RT} Star, derived from class \hyperlink{classRRT}{R\+RT} Star The following class \hyperlink{classRRT}{R\+RT} Star converges faster to find the optimized path found by \hyperlink{classRRT}{R\+RT} Star algorithm using a heuristic model.  
+
+
+
+
+{\ttfamily \#include $<$Informed\+R\+R\+T\+Star.\+hpp$>$}
+
+
+
+Inheritance diagram for Informed\+R\+R\+T\+Star\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classInformedRRTStar__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Informed\+R\+R\+T\+Star\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classInformedRRTStar__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classInformedRRTStar_a4d5570b65e11a71d7ab132836eab25a5}{Informed\+R\+R\+T\+Star} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for Informed \hyperlink{classRRT}{R\+RT} Star. Prints basic information regarding planner. \end{DoxyCompactList}\item 
+\hyperlink{classInformedRRTStar_a85971b0ff627946cb05f235e03b6a3f1}{$\sim$\+Informed\+R\+R\+T\+Star} ()
+\begin{DoxyCompactList}\small\item\em Destructor for Informed \hyperlink{classRRT}{R\+RT} Star. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{classInformedRRTStar_a19d619bb1f106dbd36674a545e82a2b3}{generate\+Heuristic\+Node} ()
+\begin{DoxyCompactList}\small\item\em samples a random point \mbox{[}x,y\mbox{]} in the heuristic region \end{DoxyCompactList}\item 
+void \hyperlink{classInformedRRTStar_afbd7ccc52e9d6dfe734ffcb1bc386234}{run\+Planner} ()
+\begin{DoxyCompactList}\small\item\em starts the execution of the Informed \hyperlink{classRRT}{R\+RT} Star planning algorithm \end{DoxyCompactList}\item 
+void \hyperlink{classInformedRRTStar_ac13574a2c2a765599ef42283b069a471}{reset\+Planner} ()
+\begin{DoxyCompactList}\small\item\em resets the planner by clearing all member varibles of Informed \hyperlink{classRRT}{R\+RT} Star class planner object \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class Informed \hyperlink{classRRT}{R\+RT} Star, derived from class \hyperlink{classRRT}{R\+RT} Star The following class \hyperlink{classRRT}{R\+RT} Star converges faster to find the optimized path found by \hyperlink{classRRT}{R\+RT} Star algorithm using a heuristic model. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}!Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}}
+\index{Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}!Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{Informed\+R\+R\+T\+Star()}{InformedRRTStar()}}]{\setlength{\rightskip}{0pt plus 5cm}Informed\+R\+R\+T\+Star\+::\+Informed\+R\+R\+T\+Star (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classInformedRRTStar_a4d5570b65e11a71d7ab132836eab25a5}{}\label{classInformedRRTStar_a4d5570b65e11a71d7ab132836eab25a5}
+
+
+Default constructor for Informed \hyperlink{classRRT}{R\+RT} Star. Prints basic information regarding planner. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}!````~Informed\+R\+R\+T\+Star@{$\sim$\+Informed\+R\+R\+T\+Star}}
+\index{````~Informed\+R\+R\+T\+Star@{$\sim$\+Informed\+R\+R\+T\+Star}!Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{$\sim$\+Informed\+R\+R\+T\+Star()}{~InformedRRTStar()}}]{\setlength{\rightskip}{0pt plus 5cm}Informed\+R\+R\+T\+Star\+::$\sim$\+Informed\+R\+R\+T\+Star (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classInformedRRTStar_a85971b0ff627946cb05f235e03b6a3f1}{}\label{classInformedRRTStar_a85971b0ff627946cb05f235e03b6a3f1}
+
+
+Destructor for Informed \hyperlink{classRRT}{R\+RT} Star. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}!generate\+Heuristic\+Node@{generate\+Heuristic\+Node}}
+\index{generate\+Heuristic\+Node@{generate\+Heuristic\+Node}!Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{generate\+Heuristic\+Node()}{generateHeuristicNode()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Informed\+R\+R\+T\+Star\+::generate\+Heuristic\+Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classInformedRRTStar_a19d619bb1f106dbd36674a545e82a2b3}{}\label{classInformedRRTStar_a19d619bb1f106dbd36674a545e82a2b3}
+
+
+samples a random point \mbox{[}x,y\mbox{]} in the heuristic region 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector \mbox{[}x,y\mbox{]} as double elements 
+\end{DoxyReturn}
+\index{Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}!reset\+Planner@{reset\+Planner}}
+\index{reset\+Planner@{reset\+Planner}!Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{reset\+Planner()}{resetPlanner()}}]{\setlength{\rightskip}{0pt plus 5cm}void Informed\+R\+R\+T\+Star\+::reset\+Planner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classInformedRRTStar_ac13574a2c2a765599ef42283b069a471}{}\label{classInformedRRTStar_ac13574a2c2a765599ef42283b069a471}
+
+
+resets the planner by clearing all member varibles of Informed \hyperlink{classRRT}{R\+RT} Star class planner object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classRRTStar_a713736e18edd589d262dd4c2efc1e18d}{R\+R\+T\+Star}.
+
+\index{Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}!run\+Planner@{run\+Planner}}
+\index{run\+Planner@{run\+Planner}!Informed\+R\+R\+T\+Star@{Informed\+R\+R\+T\+Star}}
+\subsubsection[{\texorpdfstring{run\+Planner()}{runPlanner()}}]{\setlength{\rightskip}{0pt plus 5cm}void Informed\+R\+R\+T\+Star\+::run\+Planner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classInformedRRTStar_afbd7ccc52e9d6dfe734ffcb1bc386234}{}\label{classInformedRRTStar_afbd7ccc52e9d6dfe734ffcb1bc386234}
+
+
+starts the execution of the Informed \hyperlink{classRRT}{R\+RT} Star planning algorithm 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classRRTStar_a5018db145f3a5bb5b4a13b710009ae55}{R\+R\+T\+Star}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/include/Informed\+R\+R\+T\+Star.\+hpp\end{DoxyCompactItemize}

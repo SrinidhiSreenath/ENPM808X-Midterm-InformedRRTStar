@@ -1,0 +1,276 @@
+\hypertarget{classMap}{}\section{Map Class Reference}
+\label{classMap}\index{Map@{Map}}
+
+
+Class \hyperlink{classMap}{Map} The following class \hyperlink{classMap}{Map} aids in storing the layout of the environment.  
+
+
+
+
+{\ttfamily \#include $<$map.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMap_a0f5ad0fd4563497b4214038cbca8b582}{Map} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{classMap}{Map}. \end{DoxyCompactList}\item 
+\hyperlink{classMap_aa403fbe09394ccf39747588f5168e3b2}{$\sim$\+Map} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \hyperlink{classMap}{Map}. \end{DoxyCompactList}\item 
+void \hyperlink{classMap_a86751846501ae330d05846a326d3e27b}{set\+Workspace\+Boundary} (const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&\hyperlink{MapTest_8cpp_ad2559d9d65caf07bc831e905bc151444}{boundary})
+\begin{DoxyCompactList}\small\item\em setter function to set workspace boundary \end{DoxyCompactList}\item 
+void \hyperlink{classMap_a0eba67299e0745bc6ef754634e79048d}{add\+Obstacle} (const std\+::vector$<$ double $>$ \&obstacle)
+\begin{DoxyCompactList}\small\item\em function to add obstacle to a \hyperlink{classMap}{Map} \end{DoxyCompactList}\item 
+bool \hyperlink{classMap_abf3c57ffaaee4b5c69a4db9cbae65f21}{on\+Segment} (const std\+::pair$<$ double, double $>$ \&first\+Point, const std\+::pair$<$ double, double $>$ \&second\+Point, const std\+::pair$<$ double, double $>$ \&third\+Point)
+\begin{DoxyCompactList}\small\item\em checks if the second point lies on the line segment connecting first point and third point. \end{DoxyCompactList}\item 
+int \hyperlink{classMap_ada38d0c2e965ac5c0ef5059e83fc4fb8}{get\+Orientation} (const std\+::pair$<$ double, double $>$ \&first\+Point, const std\+::pair$<$ double, double $>$ \&second\+Point, const std\+::pair$<$ double, double $>$ \&third\+Point)
+\begin{DoxyCompactList}\small\item\em determines the oreintation i.\+e clockwise, anti-\/clockwise or collinearity of three ordered points. \end{DoxyCompactList}\item 
+bool \hyperlink{classMap_ae48b43df43e2592d3813186f2fdec3c0}{is\+Intersect} (const std\+::pair$<$ double, double $>$ \&tree\+Node, const std\+::pair$<$ double, double $>$ \&new\+Node, const std\+::pair$<$ double, double $>$ \&first\+Vertex, const std\+::pair$<$ double, double $>$ \&second\+Vertex)
+\begin{DoxyCompactList}\small\item\em determines if the line segments of tree node and new node, and first vertex and second vertex intersect \end{DoxyCompactList}\item 
+bool \hyperlink{classMap_a310fd37abaf86fc980580fdbfcb592b8}{is\+Outof\+Map} (const std\+::pair$<$ double, double $>$ \&node)
+\begin{DoxyCompactList}\small\item\em determines if the given node is out of map bounds \end{DoxyCompactList}\item 
+bool \hyperlink{classMap_a4b6c14abb59b0e2bed63888271118723}{is\+Valid\+Node} (const std\+::pair$<$ double, double $>$ \&tree\+Node, const std\+::pair$<$ double, double $>$ \&new\+Node)
+\begin{DoxyCompactList}\small\item\em determines if the given node can be added to the existing tree in the workspace without any conflicts \end{DoxyCompactList}\item 
+void \hyperlink{classMap_a79a7d2715d8face71c5f16be9e14ac0a}{reset\+Map} ()
+\begin{DoxyCompactList}\small\item\em function to reset the map by clearing the member variables \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{classMap_a8f459ed4a725e13ae680c26dfb4a77a3}{obstacle\+List}
+\item 
+std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \hyperlink{classMap_ad93f26cfc04f6cf732a4f534765e57f7}{workspace\+Boundary}
+\begin{DoxyCompactList}\small\item\em of paired points \mbox{[}x,y\mbox{]} \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \hyperlink{classMap_a8b9bf67221211a1afa6cd05458f01e5a}{boundary\+Xlimits}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{classMap_abbf6818140bc341cea9b30097a990d0a}{boundary\+Ylimits}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class \hyperlink{classMap}{Map} The following class \hyperlink{classMap}{Map} aids in storing the layout of the environment. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\subsubsection[{\texorpdfstring{Map()}{Map()}}]{\setlength{\rightskip}{0pt plus 5cm}Map\+::\+Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a0f5ad0fd4563497b4214038cbca8b582}{}\label{classMap_a0f5ad0fd4563497b4214038cbca8b582}
+
+
+Default constructor for \hyperlink{classMap}{Map}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Map@{Map}!````~Map@{$\sim$\+Map}}
+\index{````~Map@{$\sim$\+Map}!Map@{Map}}
+\subsubsection[{\texorpdfstring{$\sim$\+Map()}{~Map()}}]{\setlength{\rightskip}{0pt plus 5cm}Map\+::$\sim$\+Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_aa403fbe09394ccf39747588f5168e3b2}{}\label{classMap_aa403fbe09394ccf39747588f5168e3b2}
+
+
+Destructor for \hyperlink{classMap}{Map}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{Map@{Map}!add\+Obstacle@{add\+Obstacle}}
+\index{add\+Obstacle@{add\+Obstacle}!Map@{Map}}
+\subsubsection[{\texorpdfstring{add\+Obstacle(const std\+::vector$<$ double $>$ \&obstacle)}{addObstacle(const std::vector< double > &obstacle)}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::add\+Obstacle (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ double $>$ \&}]{obstacle}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a0eba67299e0745bc6ef754634e79048d}{}\label{classMap_a0eba67299e0745bc6ef754634e79048d}
+
+
+function to add obstacle to a \hyperlink{classMap}{Map} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obstacle} & is a vector of double points \mbox{[}x1,y1,x2,y2...xN,yN\mbox{]} defining the boundary vertices of an obstacle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Map@{Map}!get\+Orientation@{get\+Orientation}}
+\index{get\+Orientation@{get\+Orientation}!Map@{Map}}
+\subsubsection[{\texorpdfstring{get\+Orientation(const std\+::pair$<$ double, double $>$ \&first\+Point, const std\+::pair$<$ double, double $>$ \&second\+Point, const std\+::pair$<$ double, double $>$ \&third\+Point)}{getOrientation(const std::pair< double, double > &firstPoint, const std::pair< double, double > &secondPoint, const std::pair< double, double > &thirdPoint)}}]{\setlength{\rightskip}{0pt plus 5cm}int Map\+::get\+Orientation (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ double, double $>$ \&}]{first\+Point, }
+\item[{const std\+::pair$<$ double, double $>$ \&}]{second\+Point, }
+\item[{const std\+::pair$<$ double, double $>$ \&}]{third\+Point}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_ada38d0c2e965ac5c0ef5059e83fc4fb8}{}\label{classMap_ada38d0c2e965ac5c0ef5059e83fc4fb8}
+
+
+determines the oreintation i.\+e clockwise, anti-\/clockwise or collinearity of three ordered points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+Point,second\+Point} & and third\+Point are each pair of double \mbox{[}x,y\mbox{]} points in workspace \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if collinear, 1 if clockwise, 2 if anti-\/clockwise orientation as integer 
+\end{DoxyReturn}
+\index{Map@{Map}!is\+Intersect@{is\+Intersect}}
+\index{is\+Intersect@{is\+Intersect}!Map@{Map}}
+\subsubsection[{\texorpdfstring{is\+Intersect(const std\+::pair$<$ double, double $>$ \&tree\+Node, const std\+::pair$<$ double, double $>$ \&new\+Node, const std\+::pair$<$ double, double $>$ \&first\+Vertex, const std\+::pair$<$ double, double $>$ \&second\+Vertex)}{isIntersect(const std::pair< double, double > &treeNode, const std::pair< double, double > &newNode, const std::pair< double, double > &firstVertex, const std::pair< double, double > &secondVertex)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Map\+::is\+Intersect (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ double, double $>$ \&}]{tree\+Node, }
+\item[{const std\+::pair$<$ double, double $>$ \&}]{new\+Node, }
+\item[{const std\+::pair$<$ double, double $>$ \&}]{first\+Vertex, }
+\item[{const std\+::pair$<$ double, double $>$ \&}]{second\+Vertex}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_ae48b43df43e2592d3813186f2fdec3c0}{}\label{classMap_ae48b43df43e2592d3813186f2fdec3c0}
+
+
+determines if the line segments of tree node and new node, and first vertex and second vertex intersect 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tree\+Node} & is the node in the tree as pair of double points \mbox{[}x,y\mbox{]} new\+Node is the node in the workspace as pair of double points \mbox{[}x,y\mbox{]} first\+Vertex, second\+Vertex are the vertices of an edge of an obstacle as pair of double points \mbox{[}x,y\mbox{]} each \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the line segments intersect, false if they don\textquotesingle{}t 
+\end{DoxyReturn}
+\index{Map@{Map}!is\+Outof\+Map@{is\+Outof\+Map}}
+\index{is\+Outof\+Map@{is\+Outof\+Map}!Map@{Map}}
+\subsubsection[{\texorpdfstring{is\+Outof\+Map(const std\+::pair$<$ double, double $>$ \&node)}{isOutofMap(const std::pair< double, double > &node)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Map\+::is\+Outof\+Map (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ double, double $>$ \&}]{node}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a310fd37abaf86fc980580fdbfcb592b8}{}\label{classMap_a310fd37abaf86fc980580fdbfcb592b8}
+
+
+determines if the given node is out of map bounds 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & is the point \mbox{[}x,y\mbox{]} in workspace as pair of double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if node is out of boundary, false otherwise 
+\end{DoxyReturn}
+\index{Map@{Map}!is\+Valid\+Node@{is\+Valid\+Node}}
+\index{is\+Valid\+Node@{is\+Valid\+Node}!Map@{Map}}
+\subsubsection[{\texorpdfstring{is\+Valid\+Node(const std\+::pair$<$ double, double $>$ \&tree\+Node, const std\+::pair$<$ double, double $>$ \&new\+Node)}{isValidNode(const std::pair< double, double > &treeNode, const std::pair< double, double > &newNode)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Map\+::is\+Valid\+Node (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ double, double $>$ \&}]{tree\+Node, }
+\item[{const std\+::pair$<$ double, double $>$ \&}]{new\+Node}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a4b6c14abb59b0e2bed63888271118723}{}\label{classMap_a4b6c14abb59b0e2bed63888271118723}
+
+
+determines if the given node can be added to the existing tree in the workspace without any conflicts 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tree\+Node} & is the node in the tree as pair of double points \mbox{[}x,y\mbox{]} new\+Node is the node in the workspace as pair of double points \mbox{[}x,y\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the tree\+Node can be added to the tree, false otherwise 
+\end{DoxyReturn}
+\index{Map@{Map}!on\+Segment@{on\+Segment}}
+\index{on\+Segment@{on\+Segment}!Map@{Map}}
+\subsubsection[{\texorpdfstring{on\+Segment(const std\+::pair$<$ double, double $>$ \&first\+Point, const std\+::pair$<$ double, double $>$ \&second\+Point, const std\+::pair$<$ double, double $>$ \&third\+Point)}{onSegment(const std::pair< double, double > &firstPoint, const std::pair< double, double > &secondPoint, const std::pair< double, double > &thirdPoint)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Map\+::on\+Segment (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ double, double $>$ \&}]{first\+Point, }
+\item[{const std\+::pair$<$ double, double $>$ \&}]{second\+Point, }
+\item[{const std\+::pair$<$ double, double $>$ \&}]{third\+Point}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_abf3c57ffaaee4b5c69a4db9cbae65f21}{}\label{classMap_abf3c57ffaaee4b5c69a4db9cbae65f21}
+
+
+checks if the second point lies on the line segment connecting first point and third point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+Point,second\+Point} & and third\+Point are each pair of double \mbox{[}x,y\mbox{]} points in workspace \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if second point lies on the line segment, false if it doesn\textquotesingle{}t 
+\end{DoxyReturn}
+\index{Map@{Map}!reset\+Map@{reset\+Map}}
+\index{reset\+Map@{reset\+Map}!Map@{Map}}
+\subsubsection[{\texorpdfstring{reset\+Map()}{resetMap()}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::reset\+Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a79a7d2715d8face71c5f16be9e14ac0a}{}\label{classMap_a79a7d2715d8face71c5f16be9e14ac0a}
+
+
+function to reset the map by clearing the member variables 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Map@{Map}!set\+Workspace\+Boundary@{set\+Workspace\+Boundary}}
+\index{set\+Workspace\+Boundary@{set\+Workspace\+Boundary}!Map@{Map}}
+\subsubsection[{\texorpdfstring{set\+Workspace\+Boundary(const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&boundary)}{setWorkspaceBoundary(const std::vector< std::pair< double, double >> &boundary)}}]{\setlength{\rightskip}{0pt plus 5cm}void Map\+::set\+Workspace\+Boundary (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&}]{boundary}
+\end{DoxyParamCaption}
+)}\hypertarget{classMap_a86751846501ae330d05846a326d3e27b}{}\label{classMap_a86751846501ae330d05846a326d3e27b}
+
+
+setter function to set workspace boundary 
+
+
+\begin{DoxyParams}{Parameters}
+{\em boundary} & is a vector of paired points \mbox{[}x,y\mbox{]} defining the boundary vertices \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{Map@{Map}!boundary\+Xlimits@{boundary\+Xlimits}}
+\index{boundary\+Xlimits@{boundary\+Xlimits}!Map@{Map}}
+\subsubsection[{\texorpdfstring{boundary\+Xlimits}{boundaryXlimits}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Map\+::boundary\+Xlimits}\hypertarget{classMap_a8b9bf67221211a1afa6cd05458f01e5a}{}\label{classMap_a8b9bf67221211a1afa6cd05458f01e5a}
+Variable to hold min and max limits of the workspace boundary on x axis \index{Map@{Map}!boundary\+Ylimits@{boundary\+Ylimits}}
+\index{boundary\+Ylimits@{boundary\+Ylimits}!Map@{Map}}
+\subsubsection[{\texorpdfstring{boundary\+Ylimits}{boundaryYlimits}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Map\+::boundary\+Ylimits}\hypertarget{classMap_abbf6818140bc341cea9b30097a990d0a}{}\label{classMap_abbf6818140bc341cea9b30097a990d0a}
+Variable to hold min and max limits of the workspace boundary on y axis \index{Map@{Map}!obstacle\+List@{obstacle\+List}}
+\index{obstacle\+List@{obstacle\+List}!Map@{Map}}
+\subsubsection[{\texorpdfstring{obstacle\+List}{obstacleList}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::vector$<$double$>$ $>$ Map\+::obstacle\+List}\hypertarget{classMap_a8f459ed4a725e13ae680c26dfb4a77a3}{}\label{classMap_a8f459ed4a725e13ae680c26dfb4a77a3}
+Variable to hold list of obstacles. Each obstacle is defined as a vector of points in the order \mbox{[}x1, y1, x2, y2 ... xN, yN\mbox{]} \index{Map@{Map}!workspace\+Boundary@{workspace\+Boundary}}
+\index{workspace\+Boundary@{workspace\+Boundary}!Map@{Map}}
+\subsubsection[{\texorpdfstring{workspace\+Boundary}{workspaceBoundary}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::pair$<$double, double$>$ $>$ Map\+::workspace\+Boundary}\hypertarget{classMap_ad93f26cfc04f6cf732a4f534765e57f7}{}\label{classMap_ad93f26cfc04f6cf732a4f534765e57f7}
+
+
+of paired points \mbox{[}x,y\mbox{]} 
+
+Variable to hold workspace boundary as a vector 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/srinidhi/\+Git\+Hub/\+My Repos/\+E\+N\+P\+M808\+X-\/\+Midterm-\/\+Informed\+R\+R\+T\+Star/include/\hyperlink{map_8hpp}{map.\+hpp}\end{DoxyCompactItemize}
