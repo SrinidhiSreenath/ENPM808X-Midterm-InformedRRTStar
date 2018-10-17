@@ -111,10 +111,9 @@ std::shared_ptr<RRTNode> RRTStar::rewireRRTree(
   double currentNodeCost = parentCost + dist;
 
   double newCost = std::numeric_limits<double>::max();
-  double rewireParentCost;
 
   for (const auto &rnd : rewireNodes_) {
-    rewireParentCost = rnd->getCostToCome();
+    double rewireParentCost = rnd->getCostToCome();
     dist = getEuclideanDistance(newNode, currentParent->getState());
     newCost = rewireParentCost + dist;
 

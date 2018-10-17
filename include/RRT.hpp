@@ -39,6 +39,7 @@
 #ifndef INCLUDE_RRT_HPP_
 #define INCLUDE_RRT_HPP_
 
+// Class header files
 #include "RRTNode.hpp"
 #include "map.hpp"
 
