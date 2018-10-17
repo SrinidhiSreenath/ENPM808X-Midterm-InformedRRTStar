@@ -11,6 +11,8 @@ add_executable(
    ../app/RRT.cpp
     RRTStarTest.cpp
     ../app/RRTStar.cpp
+    InformedRRTStarTest.cpp
+    ../app/InformedRRTStar.cpp
 )
 
 target_include_directories(cpp-test PUBLIC ../vendor/googletest/googletest/include 
