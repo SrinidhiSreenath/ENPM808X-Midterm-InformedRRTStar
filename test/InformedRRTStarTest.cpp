@@ -1,8 +1,56 @@
+/****************************************************************************
+ * MIT License
+ * Copyright (c) 2018 Srinidhi Sreenath
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ ******************************************************************************/
+
+/**
+ *  @file    RRTStarTest.cpp
+ *  @author  Srinidhi Sreenath (SrinidhiSreenath)
+ *  @date    10/15/2018
+ *  @version 1.0
+ *
+ *  @brief Unit tests for class RRT
+ *
+ *  @section DESCRIPTION
+ *
+ *  Test cases to test the class members of Informed RRT Star planner.
+ *
+ */
+
 #include <gtest/gtest.h>
 #include <cmath>
 
 // Class header file
 #include "InformedRRTStar.hpp"
+
+/**
+ * The following test cases follow similar test cases to class RRT Star. Due to
+ * the probabilistic nature of the  algorithm, a test case to check for
+ * optimality and faster convergence cannot pass all the time. Convergence
+ * depends on certain factors like max number of iterations, the environment,
+ * start and end points etc.
+ *
+ * A test case to check for faster convergence is not currently implemented due
+ * to the non deterministic behavior of the algorithm.
+ */
 
 InformedRRTStar dummyPlan;  ///< Initialize Test planner
 

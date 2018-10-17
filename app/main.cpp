@@ -1,3 +1,42 @@
+/****************************************************************************
+ * MIT License
+ * Copyright (c) 2018 Srinidhi Sreenath
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ ******************************************************************************/
+
+/**
+ *  @file    main.cpp
+ *  @author  Srinidhi Sreenath (SrinidhiSreenath)
+ *  @date    10/16/2018
+ *  @version 1.0
+ *
+ *  @brief main source file to implement the planner
+ *
+ *  @section DESCRIPTION
+ *
+ *  Source file to implement the Informed RRT* planner. A custom environment is
+ *  defined and the planner is run. The final path is visualised using the
+ *  matplotlibcpp library
+ *
+ *
+ */
 #include <cmath>
 #include <iostream>
 
@@ -6,6 +45,17 @@
 
 namespace plt = matplotlibcpp;
 
+/**
+ *   @brief  function that plots the planned path and the environment
+ *
+ *   @param  boundary is the boundary of the environment as vector of paired
+ *           double points
+ *           obstacles is the vector of vector containing the obstacle
+ *           coordinates each as [x1,y1,x2,y2,...xN,yN]
+ *           waypoints are the points along the path as a vector of paired
+ *           double elements
+ *   @return void
+ */
 void plotPlan(const std::vector<std::pair<double, double>> &boundary,
               const std::vector<std::vector<double>> &obstacles,
               const std::vector<std::pair<double, double>> &waypoints) {
@@ -59,6 +109,12 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
   plt::show();
 }
 
+/**
+ *   @brief  main function implementing the planner
+ *
+ *   @param  none
+ *   @return integer 0 indication successful execution
+ */
 int main() {
   InformedRRTStar testPlan;  ///< Initialize Test planner
 
@@ -76,9 +132,6 @@ int main() {
   testObstacles.push_back({0.0, 90.0, 25.0, 90.0, 25.0, 100.0, 0.0, 100.0});
   testObstacles.push_back({20.0, 0.0, 80.0, 0.0, 80.0, 15.0, 20.0, 15.0});
   testObstacles.push_back({93.0, 40.0, 100.0, 40.0, 100.0, 90.0, 93.0, 90.0});
-  // testObstacles.push_back({25.0, 25.0, 35.0, 25.0, 35.0, 40.0, 25.0, 40.0});
-  // testObstacles.push_back({65.0, 25.0, 75.0, 25.0, 75.0, 40.0, 65.0, 40.0});
-  // testObstacles.push_back({40.0, 40.0, 60.0, 40.0, 60.0, 50.0, 40.0, 50.0});
 
   // Set the map for the planner
   testPlan.setMap(testBoundary, testObstacles);
@@ -95,10 +148,7 @@ int main() {
   // Get the planner path
   auto waypoints = testPlan.getPlannerPath();
 
-  // for (const auto &pt : waypoints) {
-  //   std::cout << pt.first << " , " << pt.second << std::endl;
-  // }
-
+  // Visualize the environment and the path
   plotPlan(testBoundary, testObstacles, waypoints);
 
   return 0;
