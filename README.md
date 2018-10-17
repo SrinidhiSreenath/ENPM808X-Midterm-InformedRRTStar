@@ -19,6 +19,11 @@ an improvement on RRTs, extend the problem to finding the optimal solution in th
 asymptotically. Informed RRT* improves the convergence speed of RRT* by introducing a heuristic, similar to the way in which 
 A* improves upon Dijkstra’s algorithm.
 
+## Result
+
+The following image is the result of the informed RRT star algorithm on execution.
+![alt text](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/master/irrtstar.png)
+
 ## Solo Iterative Process (SIP)
 Solo Iterative Process (SIP) is used in the development of the project. Test Driven Development appoach is used to comply with the short development cycle. The planning and development of the project is done in four sprints. 
 
