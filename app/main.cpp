@@ -1,8 +1,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "RRT.hpp"
-#include "RRTStar.hpp"
+#include "InformedRRTStar.hpp"
 #include "matplotlibcpp.h"
 
 namespace plt = matplotlibcpp;
@@ -29,7 +28,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
       minY = bound.first;
     }
   }
-  plt::title("RRT Path Planner");
+  plt::title("Informed RRT Star Path Planner");
 
   plt::ylim(minY, maxY);
   plt::xlim(minX, maxX);
@@ -61,7 +60,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
 }
 
 int main() {
-  RRTStar testPlan;  ///< Initialize Test planner
+  InformedRRTStar testPlan;  ///< Initialize Test planner
 
   std::vector<std::pair<double, double>>
       testBoundary;  ///< variable to hold boundary vertices
