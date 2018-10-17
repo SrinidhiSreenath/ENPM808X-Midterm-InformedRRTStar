@@ -49,16 +49,12 @@
  */
 class RRT {
  private:
-  const size_t maxIterations_ = 10000;  ///< parameter that defines maximum
-                                        ///< iterations the algorithm should run
+  const size_t maxIterations_ = 1000;  ///< parameter that defines maximum
+                                       ///< iterations the algorithm should run
   const double driveParameter_ =
-      2.0;  ///< a parameter of the RRT algorithm that defines the maximum
+      3.0;  ///< a parameter of the RRT algorithm that defines the maximum
             ///< distance the random tree grows by one node a time
 
-  std::vector<double>
-      startNode_;  ///< variable to hold the starting node for the algorithm
-  std::vector<double> goalNode_;  ///< variable to hold the goal node where the
-                                  ///< algorithm terminates
   std::vector<std::pair<double, double>>
       plannerPath_;  ///< a vector of pair points [x,y] describing the path the
                      ///< algorithm finds
@@ -66,10 +62,13 @@ class RRT {
       RRTree;  ///< vector of object of class RRTNode used to store the tree
                ///< datastructure the algorithm generates
 
+ public:
+  std::vector<double>
+      startNode_;  ///< variable to hold the starting node for the algorithm
+  std::vector<double> goalNode_;  ///< variable to hold the goal node where the
+                                  ///< algorithm terminates
   Map map_;  ///< object of class Map to hold the information regarding the
              ///< environment
-
- public:
   /**
    *   @brief  Default constructor for RRT. Prints basic information regarding
    *           planner.
@@ -116,8 +115,8 @@ class RRT {
    *           goal defines the goal point as a vector [x,y] of double elements
    *   @return void
    */
-  void setStartAndGoal(const std::vector<double> &start,
-                       const std::vector<double> &goal);
+  virtual void setStartAndGoal(const std::vector<double> &start,
+                               const std::vector<double> &goal);
 
   /**
    *   @brief  samples a random point [x,y] in the map environment
@@ -150,7 +149,7 @@ class RRT {
    *   @return A smart pointer (shared_ptr) pointing to the object of the
    *           closest tree node
    */
-  std::shared_ptr<RRTNode> findClosestTreeNode(
+  virtual std::shared_ptr<RRTNode> findClosestTreeNode(
       const std::vector<double> &randomNode);
 
   /**
@@ -178,8 +177,8 @@ class RRT {
    *           pointing to the parent of the validNode
    *   @return void
    */
-  void appendRRTree(const std::vector<double> &validNode,
-                    const std::shared_ptr<RRTNode> &validNodeParent);
+  virtual void appendRRTree(const std::vector<double> &validNode,
+                            const std::shared_ptr<RRTNode> &validNodeParent);
 
   /**
    *   @brief  checks if the goal node is within drivable distance from the
@@ -198,7 +197,7 @@ class RRT {
    *   @return vector of pair of double elements [x,y] representing the set of
    *           waypoints
    */
-  std::vector<std::pair<double, double>> getPlannerPath();
+  virtual std::vector<std::pair<double, double>> getPlannerPath();
 
   /**
    *   @brief  returns the tree resulting from the RRT algorithm
@@ -214,7 +213,7 @@ class RRT {
    *   @param  none
    *   @return void
    */
-  void runPlanner();
+  virtual void runPlanner();
 
   /**
    *   @brief  resets the planner by clearing all member varibles of RRT class
@@ -223,6 +222,6 @@ class RRT {
    *   @param  none
    *   @return void
    */
-  void resetPlanner();
+  virtual void resetPlanner();
 };
 #endif  //  INCLUDE_RRT_HPP_
