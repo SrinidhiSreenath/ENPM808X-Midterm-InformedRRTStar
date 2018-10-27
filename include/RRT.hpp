@@ -50,8 +50,8 @@
  */
 class RRT {
  private:
-  const size_t maxIterations_ = 1000;  ///< parameter that defines maximum
-                                       ///< iterations the algorithm should run
+  const size_t maxIterations_ = 10000;  ///< parameter that defines maximum
+                                        ///< iterations the algorithm should run
   const double driveParameter_ =
       3.0;  ///< a parameter of the RRT algorithm that defines the maximum
             ///< distance the random tree grows by one node a time
