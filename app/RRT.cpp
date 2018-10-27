@@ -211,7 +211,7 @@ void RRT::runPlanner() {
         isGoalReached(leafNode) && map_.isValidNode(leafNodePt, goalNodePt);
   }
   // Append goal point to the tree
-  if (iterations < maxIterations_) {
+  if (reachedGoal) {
     std::shared_ptr<RRTNode> goalParentPtr =
         std::make_shared<RRTNode>(RRTree.back());
     appendRRTree(goalNode_, goalParentPtr);
