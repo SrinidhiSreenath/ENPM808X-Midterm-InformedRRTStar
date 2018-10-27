@@ -169,7 +169,6 @@ int main() {
 
   // Get the planner path
   auto waypoints = testPlan.getPlannerPath();
-  std::cout << "plan size: " << waypoints.size() << std::endl;
 
   // Visualize the environment and the path
   plotPlan(testBoundary, testObstacles, waypoints, tree);
