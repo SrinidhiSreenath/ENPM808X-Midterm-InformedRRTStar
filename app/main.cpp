@@ -40,7 +40,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "InformedRRTStar.hpp"
+#include "RRT.hpp"
 #include "matplotlibcpp.h"
 
 namespace plt = matplotlibcpp;
@@ -58,7 +58,8 @@ namespace plt = matplotlibcpp;
  */
 void plotPlan(const std::vector<std::pair<double, double>> &boundary,
               const std::vector<std::vector<double>> &obstacles,
-              const std::vector<std::pair<double, double>> &waypoints) {
+              const std::vector<std::pair<double, double>> &waypoints,
+              std::vector<RRTNode> &tree) {
   double maxX = std::numeric_limits<double>::min();
   double minX = std::numeric_limits<double>::max();
   double maxY = std::numeric_limits<double>::min();
@@ -94,7 +95,25 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
     }
     x.push_back(obs[0]);
     y.push_back(obs[1]);
-    plt::plot(x, y, "r");
+    plt::plot(x, y, "b");
+  }
+
+  for (auto &node : tree) {
+    std::vector<double> x;
+    std::vector<double> y;
+
+    x.push_back(node.getState()[0]);
+    y.push_back(node.getState()[1]);
+
+    plt::plot(x, y, "m-o");
+
+    if (node.getParent() != nullptr) {
+      auto parent = node.getParent();
+      x.push_back(parent->getState()[0]);
+      y.push_back(parent->getState()[1]);
+
+      plt::plot(x, y, "m");
+    }
   }
 
   std::vector<double> wayPointX, wayPointY;
@@ -102,7 +121,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
   for (const auto &pt : waypoints) {
     wayPointX.push_back(pt.first);
     wayPointY.push_back(pt.second);
-    plt::plot(wayPointX, wayPointY, "b");
+    plt::plot(wayPointX, wayPointY, "r");
     plt::pause(0.001);
   }
 
@@ -116,7 +135,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
  *   @return integer 0 indication successful execution
  */
 int main() {
-  InformedRRTStar testPlan;  ///< Initialize Test planner
+  RRT testPlan;  ///< Initialize Test planner
 
   std::vector<std::pair<double, double>>
       testBoundary;  ///< variable to hold boundary vertices
@@ -138,18 +157,22 @@ int main() {
 
   // Set start and goal point
   std::vector<double> start = {1.0, 1.0};
-  std::vector<double> goal = {50.0, 55.0};
+  std::vector<double> goal = {55.0, 50.0};
 
   testPlan.setStartAndGoal(start, goal);
 
   // Execute the planner
   testPlan.runPlanner();
 
+  // Get the tree
+  auto tree = testPlan.getRRTree();
+
   // Get the planner path
   auto waypoints = testPlan.getPlannerPath();
+  std::cout << "plan size: " << waypoints.size() << std::endl;
 
   // Visualize the environment and the path
-  plotPlan(testBoundary, testObstacles, waypoints);
+  plotPlan(testBoundary, testObstacles, waypoints, tree);
 
   return 0;
 }
