@@ -66,10 +66,10 @@ void Map::setWorkspaceBoundary(
       minX = bound.first;
     }
     if (bound.second > maxY) {
-      maxY = bound.first;
+      maxY = bound.second;
     }
     if (bound.second < minY) {
-      minY = bound.first;
+      minY = bound.second;
     }
   }
 
@@ -147,7 +147,7 @@ bool Map::isIntersect(const std::pair<double, double> &treeNode,
 
 bool Map::isOutofMap(const std::pair<double, double> &node) {
   if (node.first > boundaryXlimits[1] || node.first < boundaryXlimits[0] ||
-      node.second > boundaryYlimits[1] || node.second < boundaryXlimits[0]) {
+      node.second > boundaryYlimits[1] || node.second < boundaryYlimits[0]) {
     return true;
   } else {
     return false;
