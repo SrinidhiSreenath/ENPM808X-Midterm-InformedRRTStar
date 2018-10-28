@@ -39,6 +39,7 @@
  */
 #include <cmath>
 #include <iostream>
+#include <string>
 
 #include "RRT.hpp"
 #include "matplotlibcpp.h"
@@ -84,11 +85,13 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
   plt::ylim(minY, maxY);
   plt::xlim(minX, maxX);
 
-  std::vector<double> x, y;
+  std::map<std::string, std::string> keywords;
+  keywords["alpha"] = "0.5";
+  keywords["color"] = "blue";
+  keywords["hatch"] = "-";
 
   for (const auto &obs : obstacles) {
-    x.clear();
-    y.clear();
+    std::vector<double> x, y;
     for (size_t iter = 0; iter < obs.size(); iter += 2) {
       x.push_back(obs[iter]);
       y.push_back(obs[iter + 1]);
@@ -96,6 +99,12 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
     x.push_back(obs[0]);
     y.push_back(obs[1]);
     plt::plot(x, y, "b");
+
+    std::vector<double> fillx = {obs[0], obs[2]};
+    std::vector<double> filly1 = {obs[1], obs[7]};
+    std::vector<double> filly2 = {obs[3], obs[5]};
+
+    plt::fill_between(fillx, filly1, filly2, keywords);
   }
 
   for (auto &node : tree) {
@@ -151,13 +160,16 @@ int main() {
   testObstacles.push_back({0.0, 90.0, 25.0, 90.0, 25.0, 100.0, 0.0, 100.0});
   testObstacles.push_back({20.0, 0.0, 80.0, 0.0, 80.0, 15.0, 20.0, 15.0});
   testObstacles.push_back({93.0, 40.0, 100.0, 40.0, 100.0, 90.0, 93.0, 90.0});
+  testObstacles.push_back({25.0, 25.0, 35.0, 25.0, 35.0, 40.0, 25.0, 40.0});
+  testObstacles.push_back({65.0, 25.0, 75.0, 25.0, 75.0, 40.0, 65.0, 40.0});
+  testObstacles.push_back({40.0, 40.0, 60.0, 40.0, 60.0, 50.0, 40.0, 50.0});
 
   // Set the map for the planner
   testPlan.setMap(testBoundary, testObstacles);
 
   // Set start and goal point
   std::vector<double> start = {1.0, 1.0};
-  std::vector<double> goal = {55.0, 50.0};
+  std::vector<double> goal = {55.0, 55.0};
 
   testPlan.setStartAndGoal(start, goal);
 
