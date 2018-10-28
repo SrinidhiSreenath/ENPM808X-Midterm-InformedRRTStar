@@ -171,6 +171,11 @@ TEST(MapValidNodeTest2, testValidConnectionToTreeNode) {
   std::pair<double, double> treeNode6{83.0, 65.0};
   std::pair<double, double> newNode6{93.0, 69.0};
   ASSERT_EQ(sampleMap.isValidNode(treeNode6, newNode6), false);
+
+  // invalid node with new node inside an obstacle
+  std::pair<double, double> treeNode7{50.0, 20.0};
+  std::pair<double, double> newNode7{45.0, 7.0};
+  ASSERT_EQ(sampleMap.isValidNode(treeNode7, newNode7), false);
 }
 
 /**
