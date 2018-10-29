@@ -56,46 +56,13 @@ RRTStar::RRTStar() {
 
 RRTStar::~RRTStar() { std::cout << "Finished RRTStar plan!" << std::endl; }
 
-std::pair<size_t, double> RRTStar::getPlannerParams() { return plannerParams_; }
-
-void RRTStar::setStartAndGoal(const std::vector<double> &start,
-                              const std::vector<double> &goal) {
-  startNode_ = start;
-  goalNode_ = goal;
-
-  //  Create an RRTNode object for the start point
-  RRTNode startNode;
-  startNode.setState(startNode_[0], startNode_[1]);
-
-  // Append the start node to the empty tree. This makes the start node the root
-  // of the tree
-  RRTStarTree.push_back(startNode);
-}
-
-std::shared_ptr<RRTNode> RRTStar::findClosestTreeNode(
-    const std::vector<double> &randomNode) {
-  double minDist = std::numeric_limits<double>::max();
-  std::shared_ptr<RRTNode> closestNodePtr;
-  // Search the entire tree to find the closest node to the random
-  // node
-  for (auto &treeNode : RRTStarTree) {
-    auto nodeState = treeNode.getState();
-    double dist = getEuclideanDistance(randomNode, nodeState);
-
-    if (dist < minDist) {
-      closestNodePtr = std::make_shared<RRTNode>(treeNode);
-    }
-  }
-  return closestNodePtr;
-}
-
 std::shared_ptr<RRTNode> RRTStar::rewireRRTree(
     const std::vector<double> &newNode,
     std::shared_ptr<RRTNode> &currentParent) {
   rewireNodes_.clear();
   std::shared_ptr<RRTNode> rewireNodePtr;
 
-  for (auto &treeNode : RRTStarTree) {
+  for (auto &treeNode : RRTree) {
     auto nodeState = treeNode.getState();
     double dist = getEuclideanDistance(newNode, nodeState);
 
@@ -146,7 +113,7 @@ void RRTStar::appendRRTree(const std::vector<double> &validNode,
   }
 
   // append the current tree with the new node
-  RRTStarTree.push_back(newNode);
+  RRTree.push_back(newNode);
 }
 
 std::vector<std::pair<double, double>> RRTStar::getPlannerPath() {
@@ -169,8 +136,6 @@ std::vector<std::pair<double, double>> RRTStar::getPlannerPath() {
 }
 
 std::shared_ptr<RRTNode> RRTStar::getGoalNodePtr() { return goalNodePtr; }
-
-std::vector<RRTNode> RRTStar::getRRTStarTree() { return RRTStarTree; }
 
 void RRTStar::runPlanner() {
   auto randomNode = generateRandomNode();
@@ -196,7 +161,7 @@ void RRTStar::runPlanner() {
         appendRRTree(newNode, closestTreeNode);
       }
       randomNode = generateRandomNode();
-      std::vector<double> leafNode = RRTStarTree.back().getState();
+      std::vector<double> leafNode = RRTree.back().getState();
       std::pair<double, double> leafNodePt =
           std::make_pair(leafNode[0], leafNode[1]);
 
@@ -206,7 +171,7 @@ void RRTStar::runPlanner() {
       //  goal is found
       if (check) {
         std::shared_ptr<RRTNode> goalParentPtr =
-            std::make_shared<RRTNode>(RRTStarTree.back());
+            std::make_shared<RRTNode>(RRTree.back());
         appendRRTree(goalNode_, goalParentPtr);
         check = false;
         std::cout << "Goal Found!" << std::endl;
@@ -238,8 +203,10 @@ void RRTStar::runPlanner() {
 }
 
 void RRTStar::resetPlanner() {
-  RRTStarTree.clear();
+  RRTree.clear();
   startNode_.clear();
   goalNode_.clear();
   map_.resetMap();
+  plannerPath_.clear();
+  rewireNodes_.clear();
 }
