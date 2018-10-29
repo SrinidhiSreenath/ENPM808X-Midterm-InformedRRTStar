@@ -48,25 +48,19 @@
  *  cost to come to rewire the path and the tree nodes as well.
  */
 class RRTStar : public RRT {
- private:
-  std::pair<size_t, double> plannerParams_ =
-      getPlannerParameters();  ///<  Obtain the RRT Planner parameters
-
- public:
-  std::vector<RRTNode> RRTStarTree =
-      getRRTree();  ///<  Define the datastructure to hold the tree
-  size_t maxIterations_ =
-      plannerParams_.first;  ///<  Max iterations the algorithm runs for. Same
-                             ///<  as parent class RRT.
+ protected:
   const double rewireRange_ =
-      2.0 * plannerParams_.second;  ///<  Range around a node to check for
-                                    ///<  possible new parent to rewire to
+      2.0 * driveParameter_;  ///<  Range around a node to check for
+                              ///<  possible new parent to rewire to
+
   std::vector<std::shared_ptr<RRTNode>>
       rewireNodes_;  ///<  Vector to hold possible rewirable nodes for a given
                      ///<  node
+
   std::shared_ptr<RRTNode> goalNodePtr;  ///<  Pointer to the object of class
                                          ///<  RRTNode denoting the goal node
 
+ public:
   /**
    *   @brief  Default constructor for RRT Star. Prints basic information
    * regarding planner.
@@ -83,39 +77,6 @@ class RRTStar : public RRT {
    *   @return void
    */
   ~RRTStar();
-
-  /**
-   *   @brief  function to return RRT star planner parameters
-   *
-   *   @param  none
-   *   @return pair of values (unsigned int, double) defining the max iterations
-   *           and drive paramater respectively
-   */
-  std::pair<size_t, double> getPlannerParams();
-
-  /**
-   *   @brief  setter function to define the environment
-   *
-   *   @param  boundary is a vector of paired points [x,y] defining the
-   *           boundary vertices. obstacles is a vector of obstacle container
-   *           which in turn is a vector of double points [x1,y1,x2,y2...xN,yN]
-   *           defining the boundary vertices of an obstacle in the environment.
-   *   @return void
-   */
-  void setStartAndGoal(const std::vector<double> &start,
-                       const std::vector<double> &goal);
-
-  /**
-   *   @brief  finds the closest node in the tree to a given randomly sampled
-   *           node in the environment
-   *
-   *   @param  randomNode is the randomly sampled node in the environment as a
-   *           vector of double elements
-   *   @return A smart pointer (shared_ptr) pointing to the object of the
-   *           closest tree node
-   */
-  std::shared_ptr<RRTNode> findClosestTreeNode(
-      const std::vector<double> &randomNode);
 
   /**
    *   @brief  finds out if a better parent exists based on cummulative cost to
@@ -162,14 +123,6 @@ class RRTStar : public RRT {
    *           goal node
    */
   std::shared_ptr<RRTNode> getGoalNodePtr();
-
-  /**
-   *   @brief  returns the tree resulting from the RRT Star algorithm
-   *
-   *   @param  none
-   *   @return vector of nodes i.e objects of RRTNode class
-   */
-  std::vector<RRTNode> getRRTStarTree();
 
   /**
    *   @brief  starts the execution of the RRT Star planning algorithm
