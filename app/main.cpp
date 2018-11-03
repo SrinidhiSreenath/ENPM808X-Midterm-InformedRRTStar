@@ -41,7 +41,7 @@
 #include <iostream>
 #include <string>
 
-#include "RRT.hpp"
+#include "RRTStar.hpp"
 #include "matplotlibcpp.h"
 
 namespace plt = matplotlibcpp;
@@ -87,7 +87,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
 
   std::map<std::string, std::string> keywords;
   keywords["alpha"] = "0.5";
-  keywords["color"] = "blue";
+  keywords["color"] = "green";
   keywords["hatch"] = "-";
 
   for (const auto &obs : obstacles) {
@@ -98,7 +98,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
     }
     x.push_back(obs[0]);
     y.push_back(obs[1]);
-    plt::plot(x, y, "b");
+    plt::plot(x, y, "g");
 
     std::vector<double> fillx = {obs[0], obs[2]};
     std::vector<double> filly1 = {obs[1], obs[7]};
@@ -114,14 +114,14 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
     x.push_back(node.getState()[0]);
     y.push_back(node.getState()[1]);
 
-    plt::plot(x, y, "m-o");
+    plt::plot(x, y, "b-o");
 
     if (node.getParent() != nullptr) {
       auto parent = node.getParent();
       x.push_back(parent->getState()[0]);
       y.push_back(parent->getState()[1]);
 
-      plt::plot(x, y, "m");
+      plt::plot(x, y, "c");
     }
   }
 
@@ -144,7 +144,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
  *   @return integer 0 indication successful execution
  */
 int main() {
-  RRT testPlan;  ///< Initialize Test planner
+  RRTStar testPlan;  ///< Initialize Test planner
 
   std::vector<std::pair<double, double>>
       testBoundary;  ///< variable to hold boundary vertices
