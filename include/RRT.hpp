@@ -224,6 +224,6 @@ class RRT {
    *   @param  none
    *   @return void
    */
-  virtual void resetPlanner();
+  void resetPlanner();
 };
 #endif  //  INCLUDE_RRT_HPP_
