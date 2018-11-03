@@ -67,19 +67,22 @@ std::shared_ptr<RRTNode> RRTStar::rewireRRTree(
     double dist = getEuclideanDistance(newNode, nodeState);
 
     //  check for tree nodes within the rewire range of the current node
-    if (dist < rewireRange_ && nodeState != currentParent->getState()) {
+    if (dist < rewireRange_) {
       rewireNodePtr = std::make_shared<RRTNode>(treeNode);
       rewireNodes_.push_back(rewireNodePtr);
     }
   }
 
-  auto parentCost = currentParent->getCostToCome();
-  double dist = getEuclideanDistance(newNode, currentParent->getState());
-  double currentNodeCost = parentCost + dist;
+  // auto parentCost = currentParent->getCostToCome();
+  // double dist = getEuclideanDistance(newNode, currentParent->getState());
+
+  // Get the parent for the new node from nodes in rewire region based on
+  // least cost to come
+  double currentNodeCost = std::numeric_limits<double>::max();
 
   for (const auto &rnd : rewireNodes_) {
     double rewireParentCost = rnd->getCostToCome();
-    dist = getEuclideanDistance(newNode, rnd->getState());
+    double dist = getEuclideanDistance(newNode, rnd->getState());
     double newCost = rewireParentCost + dist;
 
     //  If another node has a better cost to come for the node, update the
@@ -89,6 +92,28 @@ std::shared_ptr<RRTNode> RRTStar::rewireRRTree(
       currentNodeCost = newCost;
     }
   }
+
+  // For all nodes in rewire region sans parent of new node, update parent
+  // based on cost to come through the new node
+  RRTNode latestNode;
+  latestNode.setState(newNode[0], newNode[1]);
+  latestNode.setParent(currentParent);
+  latestNode.setCostToCome(currentNodeCost);
+  auto latestNodePtr = std::make_shared<RRTNode>(latestNode);
+
+  for (const auto &node : rewireNodes_) {
+    if (node != currentParent) {
+      double nodeCost = node->getCostToCome();
+      double dist = getEuclideanDistance(newNode, node->getState());
+      double costThruNewNode = latestNodePtr->getCostToCome() + dist;
+
+      if (nodeCost > costThruNewNode) {
+        node->setParent(latestNodePtr);
+        node->setCostToCome(costThruNewNode);
+      }
+    }
+  }
+
   return currentParent;
 }
 
@@ -151,16 +176,7 @@ void RRTStar::runPlanner() {
     auto closestTreeNode = findClosestTreeNode(randomNode);
     // Steer towards random node from closest tree node to generate new node
     auto newNode = generateNewNode(randomNode, closestTreeNode);
-
-    // Find all nodes in rewire region
     auto rewiredParent = rewireRRTree(newNode, closestTreeNode);
-    // Get the parent for the new node from nodes in rewire region based on
-    // least cost to come
-
-    // Add new node to tree with least costliest parent
-
-    // For all nodes in rewire region sans parent of new node, update parent
-    // based on cost to come through the new node
 
     auto treeNodePts = rewiredParent->getState();
     std::pair<double, double> treeNode =
@@ -180,8 +196,8 @@ void RRTStar::runPlanner() {
         map_.isValidNode(leafNodePt, goalNodePt)) {
       std::shared_ptr<RRTNode> goalParentPtr =
           std::make_shared<RRTNode>(RRTree.back());
-      auto newParent = rewireRRTree(goalNode_, goalParentPtr);
-      appendRRTree(goalNode_, newParent);
+      auto goalParent = rewireRRTree(goalNode_, goalParentPtr);
+      appendRRTree(goalNode_, goalParent);
     }
 
     // Generate random node
