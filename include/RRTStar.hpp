@@ -60,6 +60,8 @@ class RRTStar : public RRT {
   std::shared_ptr<RRTNode> goalNodePtr;  ///<  Pointer to the object of class
                                          ///<  RRTNode denoting the goal node
 
+  bool reachedGoal = false;  ///<  Boolean variable to check if goal is reached
+
  public:
   /**
    *   @brief  Default constructor for RRT Star. Prints basic information
