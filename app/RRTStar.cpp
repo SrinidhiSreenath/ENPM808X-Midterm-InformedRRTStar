@@ -210,11 +210,3 @@ void RRTStar::runPlanner() {
     std::cout << "RRTStar Planner could not find a path" << std::endl;
   }
 }
-
-void RRTStar::resetPlanner() {
-  RRTree.clear();
-  startNode_.clear();
-  goalNode_.clear();
-  map_.resetMap();
-  plannerPath_.clear();
-}

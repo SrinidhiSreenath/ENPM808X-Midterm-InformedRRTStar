@@ -129,14 +129,5 @@ class RRTStar : public RRT {
    *   @return void
    */
   virtual void runPlanner();
-
-  /**
-   *   @brief  resets the planner by clearing all member varibles of RRT
-   *           Star class planner object
-   *
-   *   @param  none
-   *   @return void
-   */
-  virtual void resetPlanner();
 };
 #endif  // INCLUDE_RRTSTAR_HPP_
