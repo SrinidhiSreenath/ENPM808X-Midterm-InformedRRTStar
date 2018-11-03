@@ -59,8 +59,9 @@ RRTStar::~RRTStar() { std::cout << "Finished RRTStar plan!" << std::endl; }
 std::shared_ptr<RRTNode> RRTStar::rewireRRTree(
     const std::vector<double> &newNode,
     std::shared_ptr<RRTNode> &currentParent) {
-  rewireNodes_.clear();
-  std::shared_ptr<RRTNode> rewireNodePtr;
+  std::vector<std::shared_ptr<RRTNode>>
+      rewireNodes_;  ///<  Vector to hold possible rewirable nodes for a given
+                     ///<  node
 
   for (auto &treeNode : RRTree) {
     auto nodeState = treeNode.getState();
@@ -68,7 +69,7 @@ std::shared_ptr<RRTNode> RRTStar::rewireRRTree(
 
     //  check for tree nodes within the rewire range of the current node
     if (dist < rewireRange_) {
-      rewireNodePtr = std::make_shared<RRTNode>(treeNode);
+      auto rewireNodePtr = std::make_shared<RRTNode>(treeNode);
       rewireNodes_.push_back(rewireNodePtr);
     }
   }
@@ -216,5 +217,4 @@ void RRTStar::resetPlanner() {
   goalNode_.clear();
   map_.resetMap();
   plannerPath_.clear();
-  rewireNodes_.clear();
 }
