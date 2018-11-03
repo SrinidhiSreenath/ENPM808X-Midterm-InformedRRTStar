@@ -53,10 +53,6 @@ class RRTStar : public RRT {
       2.0 * driveParameter_;  ///<  Range around a node to check for
                               ///<  possible new parent to rewire to
 
-  std::vector<std::shared_ptr<RRTNode>>
-      rewireNodes_;  ///<  Vector to hold possible rewirable nodes for a given
-                     ///<  node
-
   std::shared_ptr<RRTNode> goalNodePtr;  ///<  Pointer to the object of class
                                          ///<  RRTNode denoting the goal node
 
