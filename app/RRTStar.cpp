@@ -109,6 +109,8 @@ void RRTStar::appendRRTree(const std::vector<double> &validNode,
   //  set the goal node pointer
   if (validNode[0] == goalNode_[0] && validNode[1] == goalNode_[1]) {
     goalNodePtr = std::make_shared<RRTNode>(newNode);
+    reachedGoal = true;
+    std::cout << "Goal Found!" << std::endl;
   }
 
   // append the current tree with the new node
@@ -137,62 +139,53 @@ std::vector<std::pair<double, double>> RRTStar::getPlannerPath() {
 std::shared_ptr<RRTNode> RRTStar::getGoalNodePtr() { return goalNodePtr; }
 
 void RRTStar::runPlanner() {
+  // Generate random node
   auto randomNode = generateRandomNode();
-  bool reachedGoal = false;
   std::pair<double, double> goalNodePt =
       std::make_pair(goalNode_[0], goalNode_[1]);
   size_t iterations = 0;
-  bool check = true;
 
   while (iterations < maxIterations_) {
-    if (!reachedGoal) {
-      iterations++;
-      auto closestTreeNode = findClosestTreeNode(randomNode);
-      auto newNode = generateNewNode(randomNode, closestTreeNode);
+    iterations++;
+    // Find closest tree node to random node
+    auto closestTreeNode = findClosestTreeNode(randomNode);
+    // Steer towards random node from closest tree node to generate new node
+    auto newNode = generateNewNode(randomNode, closestTreeNode);
 
-      auto treeNodePts = closestTreeNode->getState();
-      std::pair<double, double> treeNode =
-          std::make_pair(treeNodePts[0], treeNodePts[1]);
-      std::pair<double, double> newNodePt =
-          std::make_pair(newNode[0], newNode[1]);
+    // Find all nodes in rewire region
+    auto rewiredParent = rewireRRTree(newNode, closestTreeNode);
+    // Get the parent for the new node from nodes in rewire region based on
+    // least cost to come
 
-      if (map_.isValidNode(treeNode, newNodePt)) {
-        appendRRTree(newNode, closestTreeNode);
-      }
-      randomNode = generateRandomNode();
-      std::vector<double> leafNode = RRTree.back().getState();
-      std::pair<double, double> leafNodePt =
-          std::make_pair(leafNode[0], leafNode[1]);
+    // Add new node to tree with least costliest parent
 
-      reachedGoal =
-          isGoalReached(leafNode) && map_.isValidNode(leafNodePt, goalNodePt);
-    } else {
-      //  goal is found
-      if (check) {
-        std::shared_ptr<RRTNode> goalParentPtr =
-            std::make_shared<RRTNode>(RRTree.back());
-        appendRRTree(goalNode_, goalParentPtr);
-        check = false;
-        std::cout << "Goal Found!" << std::endl;
-      }
-      //  following optimization code runs until the iterations cap is met
-      iterations++;
-      auto closestTreeNode = findClosestTreeNode(randomNode);
-      auto newNode = generateNewNode(randomNode, closestTreeNode);
+    // For all nodes in rewire region sans parent of new node, update parent
+    // based on cost to come through the new node
 
-      auto rewiredParent = rewireRRTree(newNode, closestTreeNode);
+    auto treeNodePts = rewiredParent->getState();
+    std::pair<double, double> treeNode =
+        std::make_pair(treeNodePts[0], treeNodePts[1]);
+    std::pair<double, double> newNodePt =
+        std::make_pair(newNode[0], newNode[1]);
 
-      auto treeNodePts = rewiredParent->getState();
-      std::pair<double, double> treeNode =
-          std::make_pair(treeNodePts[0], treeNodePts[1]);
-      std::pair<double, double> newNodePt =
-          std::make_pair(newNode[0], newNode[1]);
-
-      if (map_.isValidNode(treeNode, newNodePt)) {
-        appendRRTree(newNode, rewiredParent);
-      }
-      randomNode = generateRandomNode();
+    if (map_.isValidNode(treeNode, newNodePt)) {
+      appendRRTree(newNode, rewiredParent);
     }
+
+    std::vector<double> leafNode = RRTree.back().getState();
+    std::pair<double, double> leafNodePt =
+        std::make_pair(leafNode[0], leafNode[1]);
+
+    if (!reachedGoal && isGoalReached(leafNode) &&
+        map_.isValidNode(leafNodePt, goalNodePt)) {
+      std::shared_ptr<RRTNode> goalParentPtr =
+          std::make_shared<RRTNode>(RRTree.back());
+      auto newParent = rewireRRTree(goalNode_, goalParentPtr);
+      appendRRTree(goalNode_, newParent);
+    }
+
+    // Generate random node
+    randomNode = generateRandomNode();
   }
 
   if (!reachedGoal && iterations >= maxIterations_) {
