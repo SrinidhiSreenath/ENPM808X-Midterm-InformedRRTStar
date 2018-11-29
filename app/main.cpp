@@ -58,7 +58,8 @@ namespace plt = matplotlibcpp;
  */
 void plotPlan(const std::vector<std::pair<double, double>> &boundary,
               const std::vector<std::vector<double>> &obstacles,
-              const std::vector<std::pair<double, double>> &waypoints) {
+              const std::vector<std::pair<double, double>> &waypoints,
+              std::vector<RRTNode> &tree) {
   double maxX = std::numeric_limits<double>::min();
   double minX = std::numeric_limits<double>::max();
   double maxY = std::numeric_limits<double>::min();
@@ -72,10 +73,10 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
       minX = bound.first;
     }
     if (bound.second > maxY) {
-      maxY = bound.first;
+      maxY = bound.second;
     }
     if (bound.second < minY) {
-      minY = bound.first;
+      minY = bound.second;
     }
   }
   plt::title("Informed RRT Star Path Planner");
@@ -83,18 +84,44 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
   plt::ylim(minY, maxY);
   plt::xlim(minX, maxX);
 
-  std::vector<double> x, y;
+  std::map<std::string, std::string> keywords;
+  keywords["alpha"] = "0.5";
+  keywords["color"] = "green";
+  keywords["hatch"] = "-";
 
   for (const auto &obs : obstacles) {
-    x.clear();
-    y.clear();
+    std::vector<double> x, y;
     for (size_t iter = 0; iter < obs.size(); iter += 2) {
       x.push_back(obs[iter]);
       y.push_back(obs[iter + 1]);
     }
     x.push_back(obs[0]);
     y.push_back(obs[1]);
-    plt::plot(x, y, "r");
+    plt::plot(x, y, "g");
+
+    std::vector<double> fillx = {obs[0], obs[2]};
+    std::vector<double> filly1 = {obs[1], obs[7]};
+    std::vector<double> filly2 = {obs[3], obs[5]};
+
+    plt::fill_between(fillx, filly1, filly2, keywords);
+  }
+
+  for (auto &node : tree) {
+    std::vector<double> x;
+    std::vector<double> y;
+
+    x.push_back(node.getState()[0]);
+    y.push_back(node.getState()[1]);
+
+    plt::plot(x, y, "b-o");
+
+    if (node.getParent() != nullptr) {
+      auto parent = node.getParent();
+      x.push_back(parent->getState()[0]);
+      y.push_back(parent->getState()[1]);
+
+      plt::plot(x, y, "c");
+    }
   }
 
   std::vector<double> wayPointX, wayPointY;
@@ -102,7 +129,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
   for (const auto &pt : waypoints) {
     wayPointX.push_back(pt.first);
     wayPointY.push_back(pt.second);
-    plt::plot(wayPointX, wayPointY, "b");
+    plt::plot(wayPointX, wayPointY, "r");
     plt::pause(0.001);
   }
 
@@ -116,7 +143,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
  *   @return integer 0 indication successful execution
  */
 int main() {
-  InformedRRTStar testPlan;  ///< Initialize Test planner
+  RRTStar testPlan;  ///< Initialize Test planner
 
   std::vector<std::pair<double, double>>
       testBoundary;  ///< variable to hold boundary vertices
@@ -132,6 +159,9 @@ int main() {
   testObstacles.push_back({0.0, 90.0, 25.0, 90.0, 25.0, 100.0, 0.0, 100.0});
   testObstacles.push_back({20.0, 0.0, 80.0, 0.0, 80.0, 15.0, 20.0, 15.0});
   testObstacles.push_back({93.0, 40.0, 100.0, 40.0, 100.0, 90.0, 93.0, 90.0});
+  testObstacles.push_back({25.0, 25.0, 35.0, 25.0, 35.0, 40.0, 25.0, 40.0});
+  testObstacles.push_back({65.0, 25.0, 75.0, 25.0, 75.0, 40.0, 65.0, 40.0});
+  testObstacles.push_back({40.0, 40.0, 60.0, 40.0, 60.0, 50.0, 40.0, 50.0});
 
   // Set the map for the planner
   testPlan.setMap(testBoundary, testObstacles);
@@ -145,11 +175,14 @@ int main() {
   // Execute the planner
   testPlan.runPlanner();
 
+  // Get the tree
+  auto tree = testPlan.getRRTStarTree();
+
   // Get the planner path
   auto waypoints = testPlan.getPlannerPath();
 
   // Visualize the environment and the path
-  plotPlan(testBoundary, testObstacles, waypoints);
+  plotPlan(testBoundary, testObstacles, waypoints, tree);
 
   return 0;
 }
