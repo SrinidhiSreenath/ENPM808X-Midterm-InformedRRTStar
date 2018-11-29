@@ -84,6 +84,7 @@ std::shared_ptr<RRTNode> RRTStar::findClosestTreeNode(
 
     if (dist < minDist) {
       closestNodePtr = std::make_shared<RRTNode>(treeNode);
+      minDist = dist;
     }
   }
   return closestNodePtr;
