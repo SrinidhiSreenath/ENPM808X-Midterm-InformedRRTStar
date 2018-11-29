@@ -40,7 +40,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "InformedRRTStar.hpp"
+#include "RRT.hpp"
 #include "matplotlibcpp.h"
 
 namespace plt = matplotlibcpp;
@@ -79,7 +79,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
       minY = bound.second;
     }
   }
-  plt::title("Informed RRT Star Path Planner");
+  plt::title("RRT Path Planner");
 
   plt::ylim(minY, maxY);
   plt::xlim(minX, maxX);
@@ -143,7 +143,7 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
  *   @return integer 0 indication successful execution
  */
 int main() {
-  RRTStar testPlan;  ///< Initialize Test planner
+  RRT testPlan;  ///< Initialize Test planner
 
   std::vector<std::pair<double, double>>
       testBoundary;  ///< variable to hold boundary vertices
@@ -176,7 +176,7 @@ int main() {
   testPlan.runPlanner();
 
   // Get the tree
-  auto tree = testPlan.getRRTStarTree();
+  auto tree = testPlan.getRRTree();
 
   // Get the planner path
   auto waypoints = testPlan.getPlannerPath();
