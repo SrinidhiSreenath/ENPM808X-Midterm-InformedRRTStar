@@ -162,7 +162,7 @@ bool Map::isValidNode(const std::pair<double, double> &treeNode,
   for (const auto &obstacle : obstacleList) {
     for (size_t i = 0; i < obstacle.size(); i += 2) {
       std::pair<double, double> firstVertex, secondVertex;
-      if (obstacle[i + 1] != obstacle.back()) {
+      if (i + 2 < obstacle.size()) {
         firstVertex = std::make_pair(obstacle[i], obstacle[i + 1]);
         secondVertex = std::make_pair(obstacle[i + 2], obstacle[i + 3]);
       } else {
