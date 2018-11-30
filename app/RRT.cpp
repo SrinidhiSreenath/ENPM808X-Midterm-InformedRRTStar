@@ -51,7 +51,9 @@
 #include <iostream>
 #include <limits>
 
-RRT::RRT() { std::cout << "Initializing RRT planner!" << std::endl; }
+RRT::RRT(Map &map) : map_(map) {
+  std::cout << "Initializing RRT planner with custom map!" << std::endl;
+}
 
 RRT::~RRT() { std::cout << "Finished RRT plan!" << std::endl; }
 
