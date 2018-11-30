@@ -39,6 +39,12 @@
 #ifndef INCLUDE_RRTSTAR_HPP_
 #define INCLUDE_RRTSTAR_HPP_
 
+// CPP Headers
+#include <cmath>
+#include <memory>
+#include <utility>
+#include <vector>
+
 // Parent class header file
 #include "RRT.hpp"
 

@@ -39,6 +39,12 @@
 #ifndef INCLUDE_RRT_HPP_
 #define INCLUDE_RRT_HPP_
 
+// CPP Headers
+#include <cmath>
+#include <memory>
+#include <utility>
+#include <vector>
+
 // Class header files
 #include "RRTNode.hpp"
 #include "map.hpp"
