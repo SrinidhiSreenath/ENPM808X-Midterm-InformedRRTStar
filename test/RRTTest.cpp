@@ -41,9 +41,15 @@
 // Class header file
 #include "RRT.hpp"
 
+/**
+ *  @brief Class RRTPlannerTest
+ *
+ *  The following class RRTPlannerTest aids in setting up and tearing down the
+ *  defined environment and the planner for each test case.
+ */
 class RRTPlannerTest : public ::testing::Test {
  public:
-  Map myMap;                  ///< Initialize mock map class
+  Map myMap;                  ///< Initialize map class
   RRT testPlan = RRT(myMap);  ///< Initialize RRT planner
 
   std::vector<std::pair<double, double>>
@@ -54,6 +60,14 @@ class RRTPlannerTest : public ::testing::Test {
   std::vector<double> start = {1.0, 1.0};   ///< variable to hold start node
   std::vector<double> goal = {50.0, 51.0};  ///< variable to hold goal node
 
+  /**
+   *   @brief  Setup function to set up the environment and execute the planner.
+   *           The setup is done at when a new test with fixture is to be
+   *           executed.
+   *
+   *   @param  none
+   *   @return void
+   */
   void SetUp() {
     // Define the environment
     testBoundary.push_back(std::make_pair(0.0, 0.0));
@@ -79,6 +93,14 @@ class RRTPlannerTest : public ::testing::Test {
     testPlan.runPlanner();
   }
 
+  /**
+   *   @brief  Teardown function to clear up the environment.
+   *           The tear down is done at when a test has completed
+   *           execution.
+   *
+   *   @param  none
+   *   @return void
+   */
   void TearDown() {
     // Clear the boundary and obstacle
     testBoundary.clear();
@@ -141,6 +163,13 @@ TEST_F(RRTPlannerTest, testValidityOfPathGivenByTheRRTPlanner) {
   }
 }
 
+/**
+ *@brief Test case to check the resetting of RRT planner. The test case checks
+ whether the planner parameters are reset properly.
+
+ *@param none
+ *@return none
+ */
 TEST_F(RRTPlannerTest, testRRTPlannerReset) {
   // Reset the planner
   testPlan.resetPlanner();

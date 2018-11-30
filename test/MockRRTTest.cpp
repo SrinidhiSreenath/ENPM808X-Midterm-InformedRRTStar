@@ -52,14 +52,46 @@
 using ::testing::_;
 using ::testing::AtLeast;
 
+/**
+ *  @brief Class MockMap
+ *
+ *  The following class MockMap mocks the Map class to help in testing the RRT
+ *  class which uses the Map class
+ */
 class MockMap : public Map {
  public:
+  /**
+   *   @brief  Mock the resetMap function which resets the environment.
+   *
+   *   @param  none
+   *   @return void
+   */
   MOCK_METHOD0(resetMap, void());
+
+  /**
+   *   @brief  Mock the setWorkspaceBoundary to set the map boundary points.
+   *
+   *   @param  boundary as vector of paired double points
+   *   @return void
+   */
   MOCK_METHOD1(setWorkspaceBoundary,
                void(const std::vector<std::pair<double, double>> &boundary));
+
+  /**
+   *   @brief  Mock the addObstacle to add obstacles to environment.
+   *
+   *   @param  obstacle as vector of double points
+   *   @return void
+   */
   MOCK_METHOD1(addObstacle, void(const std::vector<double> &obstacle));
 };
 
+/**
+ *  @brief Class MockMapTest
+ *
+ *  The following class MockMapTest aids in setting up and tearing down the
+ *  defined environment and the planner for each test case.
+ */
 class MockMapTest : public ::testing::Test {
  public:
   MockMap myMap;              ///< Initialize mock map class
@@ -70,6 +102,14 @@ class MockMapTest : public ::testing::Test {
   std::vector<std::vector<double>>
       testObstacles;  ///< variable to hold obstacles and their vertices
 
+  /**
+   *   @brief  Setup function to set up the environment i.e obstcles and map
+   *           boundary. The setup is done at when a new test with fixture is to
+   *           be executed.
+   *
+   *   @param  none
+   *   @return void
+   */
   void SetUp() {
     // Define the environment
     testBoundary.push_back(std::make_pair(0.0, 0.0));
@@ -83,6 +123,14 @@ class MockMapTest : public ::testing::Test {
     testObstacles.push_back({93.0, 40.0, 100.0, 40.0, 100.0, 90.0, 93.0, 90.0});
   }
 
+  /**
+   *   @brief  Teardown function to clear up the environment.
+   *           The tear down is done at when a test has completed
+   *           execution.
+   *
+   *   @param  none
+   *   @return void
+   */
   void TearDown() {
     // Clear the boundary and obstacle
     testBoundary.clear();
@@ -90,6 +138,13 @@ class MockMapTest : public ::testing::Test {
   }
 };
 
+/**
+ *@brief Test case to check the RRT planner setting the environment with the
+         mocked Map class object.
+
+ *@param none
+ *@return none
+ */
 TEST_F(MockMapTest, testSettingEnvironment) {
   // Expect the environment to be set up by making calls to the mocked class
   EXPECT_CALL(myMap, setWorkspaceBoundary(testBoundary)).Times(AtLeast(1));
@@ -102,6 +157,13 @@ TEST_F(MockMapTest, testSettingEnvironment) {
   testPlan.setMap(testBoundary, testObstacles);
 }
 
+/**
+ *@brief Test case to check the RRT planner resetting with the
+         mocked Map class object.
+
+ *@param none
+ *@return none
+ */
 TEST_F(MockMapTest, testResettingPlanner) {
   // Expect the environment to be set up by making calls to the mocked class
   EXPECT_CALL(myMap, setWorkspaceBoundary(testBoundary)).Times(AtLeast(1));
