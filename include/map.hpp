@@ -24,7 +24,7 @@
 /**
  *  @file    map.hpp
  *  @author  Srinidhi Sreenath (SrinidhiSreenath)
- *  @date    10/7/2018
+ *  @date    11/29/2018
  *  @version 1.0
  *
  *  @brief Map class declaration
@@ -74,7 +74,7 @@ class Map {
    *   @param  none
    *   @return void
    */
-  ~Map();
+  virtual ~Map();
 
   /**
    *   @brief  setter function to set workspace boundary
@@ -83,7 +83,7 @@ class Map {
    *           vertices
    *   @return void
    */
-  void setWorkspaceBoundary(
+  virtual void setWorkspaceBoundary(
       const std::vector<std::pair<double, double>> &boundary);
 
   /**
@@ -93,7 +93,7 @@ class Map {
    *           defining the boundary vertices of an obstacle
    *   @return void
    */
-  void addObstacle(const std::vector<double> &obstacle);
+  virtual void addObstacle(const std::vector<double> &obstacle);
 
   /**
    *   @brief  checks if the second point lies on the line segment connecting
@@ -104,9 +104,9 @@ class Map {
    *   @return true if second point lies on the line segment, false if it
    *           doesn't
    */
-  bool onSegment(const std::pair<double, double> &firstPoint,
-                 const std::pair<double, double> &secondPoint,
-                 const std::pair<double, double> &thirdPoint);
+  virtual bool onSegment(const std::pair<double, double> &firstPoint,
+                         const std::pair<double, double> &secondPoint,
+                         const std::pair<double, double> &thirdPoint);
 
   /**
    *   @brief  determines the oreintation i.e clockwise, anti-clockwise or
@@ -117,9 +117,9 @@ class Map {
    *   @return 0 if collinear, 1 if clockwise, 2 if anti-clockwise orientation
    *           as integer
    */
-  int getOrientation(const std::pair<double, double> &firstPoint,
-                     const std::pair<double, double> &secondPoint,
-                     const std::pair<double, double> &thirdPoint);
+  virtual int getOrientation(const std::pair<double, double> &firstPoint,
+                             const std::pair<double, double> &secondPoint,
+                             const std::pair<double, double> &thirdPoint);
 
   /**
    *   @brief  determines if the line segments of tree node and new node, and
@@ -132,10 +132,10 @@ class Map {
    *           obstacle as pair of double points [x,y] each
    *   @return true if the line segments intersect, false if they don't
    */
-  bool isIntersect(const std::pair<double, double> &treeNode,
-                   const std::pair<double, double> &newNode,
-                   const std::pair<double, double> &firstVertex,
-                   const std::pair<double, double> &secondVertex);
+  virtual bool isIntersect(const std::pair<double, double> &treeNode,
+                           const std::pair<double, double> &newNode,
+                           const std::pair<double, double> &firstVertex,
+                           const std::pair<double, double> &secondVertex);
 
   /**
    *   @brief  determines if the given node is out of map bounds
@@ -143,7 +143,7 @@ class Map {
    *   @param  node is the point [x,y] in workspace as pair of double
    *   @return true if node is out of boundary, false otherwise
    */
-  bool isOutofMap(const std::pair<double, double> &node);
+  virtual bool isOutofMap(const std::pair<double, double> &node);
 
   /**
    *   @brief  determines if the given node can be added to the existing tree in
@@ -154,8 +154,8 @@ class Map {
    *           [x,y]
    *   @return true if the treeNode can be added to the tree, false otherwise
    */
-  bool isValidNode(const std::pair<double, double> &treeNode,
-                   const std::pair<double, double> &newNode);
+  virtual bool isValidNode(const std::pair<double, double> &treeNode,
+                           const std::pair<double, double> &newNode);
 
   /**
    *   @brief  function to reset the map by clearing the member variables
@@ -163,7 +163,7 @@ class Map {
    *   @param  none
    *   @return void
    */
-  void resetMap();
+  virtual void resetMap();
 };
 
 #endif  // INCLUDE_MAP_HPP_
