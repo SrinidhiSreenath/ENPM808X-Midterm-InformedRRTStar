@@ -1,34 +1,27 @@
-srinidhi@srisbharadwaj:~/GitHub/My Repos/ENPM808X-Midterm-InformedRRTStar$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
 Done processing ./test/main.cpp
+Done processing ./test/MockRRTTest.cpp
 Done processing ./test/RRTStarTest.cpp
 Done processing ./test/MapTest.cpp
 Done processing ./test/RRTTest.cpp
 Done processing ./test/InformedRRTStarTest.cpp
 Done processing ./test/RRTNodeTest.cpp
-./include/RRT.hpp:201:  Add #include <utility> for pair<>  [build/include_what_you_use] [4]
-./include/RRT.hpp:209:  Add #include <vector> for vector<>  [build/include_what_you_use] [4]
+./include/RRT.hpp:87:  Is this a non-const reference? If so, make const or use a pointer: Map &map  [runtime/references] [2]
 Done processing ./include/RRT.hpp
 Done processing ./include/map.hpp
-./include/RRTStar.hpp:132:  Is this a non-const reference? If so, make const or use a pointer: std::shared_ptr<RRTNode> &currentParent  [runtime/references] [2]
-./include/RRTStar.hpp:155:  Add #include <utility> for pair<>  [build/include_what_you_use] [4]
-./include/RRTStar.hpp:172:  Add #include <vector> for vector<>  [build/include_what_you_use] [4]
+./include/RRTStar.hpp:138:  Is this a non-const reference? If so, make const or use a pointer: std::shared_ptr<RRTNode> &currentParent  [runtime/references] [2]
 Done processing ./include/RRTStar.hpp
 Done processing ./include/RRTNode.hpp
-./include/InformedRRTStar.hpp:81:  Add #include <vector> for vector<>  [build/include_what_you_use] [4]
 Done processing ./include/InformedRRTStar.hpp
 Done processing ./app/map.cpp
-./app/main.cpp:44:  Include the directory when naming .h files  [build/include_subdir] [4]
+./app/main.cpp:48:  Include the directory when naming .h files  [build/include_subdir] [4]
+./app/main.cpp:69:  Is this a non-const reference? If so, make const or use a pointer: std::vector<RRTNode> &tree  [runtime/references] [2]
 Done processing ./app/main.cpp
 ./app/InformedRRTStar.cpp:68:  Consider using rand_r(...) instead of rand(...) for improved thread safety.  [runtime/threadsafe_fn] [2]
 ./app/InformedRRTStar.cpp:69:  Consider using rand_r(...) instead of rand(...) for improved thread safety.  [runtime/threadsafe_fn] [2]
 Done processing ./app/InformedRRTStar.cpp
 Done processing ./app/RRTNode.cpp
 Done processing ./app/RRTStar.cpp
-./app/RRT.cpp:94:  Consider using rand_r(...) instead of rand(...) for improved thread safety.  [runtime/threadsafe_fn] [2]
-./app/RRT.cpp:95:  Consider using rand_r(...) instead of rand(...) for improved thread safety.  [runtime/threadsafe_fn] [2]
+./app/RRT.cpp:96:  Consider using rand_r(...) instead of rand(...) for improved thread safety.  [runtime/threadsafe_fn] [2]
+./app/RRT.cpp:97:  Consider using rand_r(...) instead of rand(...) for improved thread safety.  [runtime/threadsafe_fn] [2]
 Done processing ./app/RRT.cpp
-Total errors found: 11
-
-
-1) I have not included vector and utlity libraries in RRT.hpp, RRTStar.hpp and InformedRRTStar.hpp since it's included in map.hpp and map.hpp is included in all of the above mentioned class headers.
-
+Total errors found: 8
