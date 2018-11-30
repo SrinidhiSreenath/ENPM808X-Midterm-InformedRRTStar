@@ -37,11 +37,18 @@
  *
  *
  */
+// CPP Headers
 #include <cmath>
 #include <iostream>
+#include <memory>
+#include <utility>
+#include <vector>
 
-#include "RRT.hpp"
+// Matplotlib plotting library
 #include "matplotlibcpp.h"
+
+// RRT Planner
+#include "RRT.hpp"
 
 namespace plt = matplotlibcpp;
 
