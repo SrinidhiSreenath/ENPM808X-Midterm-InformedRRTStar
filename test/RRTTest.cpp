@@ -41,12 +41,50 @@
 // Class header file
 #include "RRT.hpp"
 
-RRT testPlan;  ///< Initialize Test planner
+class RRTPlannerTest : public ::testing::Test {
+ public:
+  Map myMap;                  ///< Initialize mock map class
+  RRT testPlan = RRT(myMap);  ///< Initialize RRT planner
 
-std::vector<std::pair<double, double>>
-    testBoundary;  ///< variable to hold boundary vertices
-std::vector<std::vector<double>>
-    testObstacles;  ///< variable to hold obstacles and their vertices
+  std::vector<std::pair<double, double>>
+      testBoundary;  ///< variable to hold boundary vertices
+  std::vector<std::vector<double>>
+      testObstacles;  ///< variable to hold obstacles and their vertices
+
+  std::vector<double> start = {1.0, 1.0};   ///< variable to hold start node
+  std::vector<double> goal = {50.0, 51.0};  ///< variable to hold goal node
+
+  void SetUp() {
+    // Define the environment
+    testBoundary.push_back(std::make_pair(0.0, 0.0));
+    testBoundary.push_back(std::make_pair(100.0, 0.0));
+    testBoundary.push_back(std::make_pair(100.0, 100.0));
+    testBoundary.push_back(std::make_pair(0.0, 100.0));
+
+    testObstacles.push_back({0.0, 80.0, 10.0, 80.0, 10.0, 90.0, 0.0, 90.0});
+    testObstacles.push_back({0.0, 90.0, 25.0, 90.0, 25.0, 100.0, 0.0, 100.0});
+    testObstacles.push_back({20.0, 0.0, 80.0, 0.0, 80.0, 15.0, 20.0, 15.0});
+    testObstacles.push_back({93.0, 40.0, 100.0, 40.0, 100.0, 90.0, 93.0, 90.0});
+    testObstacles.push_back({25.0, 25.0, 35.0, 25.0, 35.0, 40.0, 25.0, 40.0});
+    testObstacles.push_back({65.0, 25.0, 75.0, 25.0, 75.0, 40.0, 65.0, 40.0});
+    testObstacles.push_back({40.0, 40.0, 60.0, 40.0, 60.0, 50.0, 40.0, 50.0});
+
+    // Set the map for the planner
+    testPlan.setMap(testBoundary, testObstacles);
+
+    // Set start and goal
+    testPlan.setStartAndGoal(start, goal);
+
+    // Execute the planner
+    testPlan.runPlanner();
+  }
+
+  void TearDown() {
+    // Clear the boundary and obstacle
+    testBoundary.clear();
+    testObstacles.clear();
+  }
+};
 
 /**
  *@brief Test case to check the RRT planner. The test case checks whether the
@@ -62,30 +100,7 @@ std::vector<std::vector<double>>
  *@param none
  *@return none
  */
-TEST(RRTValidPathTest, testValidityOfPathGivenByTheRRTPlanner) {
-  // Define the environment
-  testBoundary.push_back(std::make_pair(0.0, 0.0));
-  testBoundary.push_back(std::make_pair(100.0, 0.0));
-  testBoundary.push_back(std::make_pair(100.0, 100.0));
-  testBoundary.push_back(std::make_pair(0.0, 100.0));
-
-  testObstacles.push_back({0.0, 80.0, 10.0, 80.0, 10.0, 90.0, 0.0, 90.0});
-  testObstacles.push_back({0.0, 90.0, 25.0, 90.0, 25.0, 100.0, 0.0, 100.0});
-  testObstacles.push_back({20.0, 0.0, 80.0, 0.0, 80.0, 15.0, 20.0, 15.0});
-  testObstacles.push_back({93.0, 40.0, 100.0, 40.0, 100.0, 90.0, 93.0, 90.0});
-
-  // Set the map for the planner
-  testPlan.setMap(testBoundary, testObstacles);
-
-  // Set start and goal point
-  std::vector<double> start = {1.0, 1.0};
-  std::vector<double> goal = {50.0, 51.0};
-
-  testPlan.setStartAndGoal(start, goal);
-
-  // Execute the planner
-  testPlan.runPlanner();
-
+TEST_F(RRTPlannerTest, testValidityOfPathGivenByTheRRTPlanner) {
   // Get the planner path
   auto waypoints = testPlan.getPlannerPath();
 
@@ -126,30 +141,7 @@ TEST(RRTValidPathTest, testValidityOfPathGivenByTheRRTPlanner) {
   }
 }
 
-TEST(RRTPlannerResetTest, testRRTResetFunction) {
-  // Define the environment
-  testBoundary.push_back(std::make_pair(0.0, 0.0));
-  testBoundary.push_back(std::make_pair(100.0, 0.0));
-  testBoundary.push_back(std::make_pair(100.0, 100.0));
-  testBoundary.push_back(std::make_pair(0.0, 100.0));
-
-  testObstacles.push_back({0.0, 80.0, 10.0, 80.0, 10.0, 90.0, 0.0, 90.0});
-  testObstacles.push_back({0.0, 90.0, 25.0, 90.0, 25.0, 100.0, 0.0, 100.0});
-  testObstacles.push_back({20.0, 0.0, 80.0, 0.0, 80.0, 15.0, 20.0, 15.0});
-  testObstacles.push_back({93.0, 40.0, 100.0, 40.0, 100.0, 90.0, 93.0, 90.0});
-
-  // Set the map for the planner
-  testPlan.setMap(testBoundary, testObstacles);
-
-  // Set start and goal point
-  std::vector<double> start = {1.0, 1.0};
-  std::vector<double> goal = {50.0, 51.0};
-
-  testPlan.setStartAndGoal(start, goal);
-
-  // Execute the planner
-  testPlan.runPlanner();
-
+TEST_F(RRTPlannerTest, testRRTPlannerReset) {
   // Reset the planner
   testPlan.resetPlanner();
 
