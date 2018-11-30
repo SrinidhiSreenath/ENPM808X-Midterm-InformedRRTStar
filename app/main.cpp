@@ -143,7 +143,8 @@ void plotPlan(const std::vector<std::pair<double, double>> &boundary,
  *   @return integer 0 indication successful execution
  */
 int main() {
-  RRT testPlan;  ///< Initialize Test planner
+  Map myMap;            ///< Initialize a Map object
+  RRT testPlan(myMap);  ///< Initialize Test planner
 
   std::vector<std::pair<double, double>>
       testBoundary;  ///< variable to hold boundary vertices
