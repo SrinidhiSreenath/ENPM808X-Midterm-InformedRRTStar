@@ -24,7 +24,7 @@
 /**
  *  @file    RRT.hpp
  *  @author  Srinidhi Sreenath (SrinidhiSreenath)
- *  @date    10/11/2018
+ *  @date    11/29/2018
  *  @version 1.0
  *
  *  @brief RRT class declaration
@@ -68,16 +68,17 @@ class RRT {
       startNode_;  ///< variable to hold the starting node for the algorithm
   std::vector<double> goalNode_;  ///< variable to hold the goal node where the
                                   ///< algorithm terminates
-  Map map_;  ///< object of class Map to hold the information regarding the
-             ///< environment
+  Map &map_;  ///< object of class Map to hold the information regarding the
+              ///< environment
+
   /**
    *   @brief  Default constructor for RRT. Prints basic information regarding
    *           planner.
    *
-   *   @param  none
+   *   @param  map is an object of class Map to hold environment information.
    *   @return void
    */
-  RRT();
+  explicit RRT(Map &map);
 
   /**
    *   @brief  Destructor for RRT
