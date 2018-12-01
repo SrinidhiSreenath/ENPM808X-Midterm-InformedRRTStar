@@ -1,5 +1,5 @@
 # Informed RRT* Algorithm - C++ Implementation
-[![Build Status](https://travis-ci.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar.svg?branch=GMock_Extra_Credit) [![Coverage Status](https://coveralls.io/repos/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/badge.svg?branch=GMock_Extra_Credit)](https://coveralls.io/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar?branch=GMock_Extra_Credit)[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/master/LICENSE)
+![Build Status](https://travis-ci.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar.svg?branch=GMock_Extra_Credit) [![Coverage Status](https://coveralls.io/repos/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/badge.svg?branch=GMock_Extra_Credit)](https://coveralls.io/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar?branch=GMock_Extra_Credit)[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/master/LICENSE)
 ---
 
 ## Overview
@@ -43,35 +43,9 @@ Solo Iterative Process (SIP) is used in the development of the project. Test Dri
 
 [Product backlog, Iteration backlogs, Work log and Sprint Schedule](https://docs.google.com/spreadsheets/d/1fvrJKm83capWolsztqe_W-Q733m2EkzF_6xD1WWORhc/edit?usp=sharing).
 
-## License
-```
-MIT License
-
-Copyright (c) 2018 Srinidhi Sreenath
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
 ## Dependencies
 
-1. [matplotlib-cpp](https://github.com/lava/matplotlib-cpp), a simple C++ plotting library, resemble the plotting API used by Matlab, is used to facilitate visualization.
-
-2. Google Test framework for unit testing - gtest and gmock.
+[matplotlib-cpp](https://github.com/lava/matplotlib-cpp), a simple C++ plotting library, resemble the plotting API used by Matlab, is used to facilitate visualization.
 
 ### Installation
 matplotlib-cpp works by wrapping the popular python plotting library matplotlib. (matplotlib.org) This means you have to have a working python installation, including development headers. On Ubuntu:
@@ -88,6 +62,9 @@ target_include_directories(myproject PRIVATE ${PYTHON_INCLUDE_DIRS})
 target_link_libraries(myproject ${PYTHON_LIBRARIES})
 ```
 where myproject is the project to be built.
+
+### Google Test
+Google Test framework for unit testing - **gtest** and **gmock**.
 
 ## Standard install via command-line
 
