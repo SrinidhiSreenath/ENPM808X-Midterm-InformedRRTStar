@@ -1,8 +1,6 @@
 # Informed RRT* Algorithm - C++ Implementation
-[![Build Status](https://travis-ci.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar.svg?branch=master)](https://travis-ci.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar) [![Coverage Status](https://coveralls.io/repos/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/badge.svg?branch=master)](https://coveralls.io/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar?branch=master) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/master/LICENSE)
+[![Build Status](https://travis-ci.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar.svg?branch=GMock_Extra_Credit) [![Coverage Status](https://coveralls.io/repos/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/badge.svg?branch=GMock_Extra_Credit)](https://coveralls.io/github/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar?branch=GMock_Extra_Credit)[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/master/LICENSE)
 ---
-
-Since there is currently an issue with coveralls updating, the code coverage section explains the method to extract the code_coverage. [Index.html](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/master/index.html) provides the necessary code coverage information.
 
 ## Overview
 
@@ -21,10 +19,24 @@ an improvement on RRTs, extend the problem to finding the optimal solution in th
 asymptotically. Informed RRT* improves the convergence speed of RRT* by introducing a heuristic, similar to the way in which 
 A* improves upon Dijkstra’s algorithm.
 
+## GMock Tests
+In the original project, Informed RRT Star planner was developed. The main project consisted of 5 classes -
+1. Class Map to define the environment
+2. Class RRTNode to describe a node in the environment.
+3. Class RRT which implements the RRT planner. Map and RRTNode are a part of this class.
+4. RRTStar planner derived from RRT class.
+5. InformedRRTSTar planner derived from RRTStar planner.
+
+As RRT class uses Map class, Map class is mocked and then the RRT class is tested. To mock the class Map, all of its methods are made virtual as well as the destructor. A new test MockRRTTest is developed in which a mock of Map class and a few of its' methods is created. This is subsequently tested with the initialization of RRT class which recieves environment information i.e boundary and obstacle information and creates an instance of class Map to store the information. 
+
+In the gmock test, RRT class is initialized with the mocked map class, which is derived from the original Map class, and the mocked map class initialization is tested. 
+ 
+To instructions to run the unit tests are given in the Install section.
+
 ## Result
 
-The following image is the result of the informed RRT star algorithm on execution.
-![alt text](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/master/irrtstar.png)
+The following image is the result of the RRT algorithm on execution.
+![alt text](https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar/blob/GMock_Extra_Credit/results/RRTplan.png)
 
 ## Solo Iterative Process (SIP)
 Solo Iterative Process (SIP) is used in the development of the project. Test Driven Development appoach is used to comply with the short development cycle. The planning and development of the project is done in four sprints. 
@@ -57,7 +69,9 @@ SOFTWARE.
 ```
 ## Dependencies
 
-[matplotlib-cpp](https://github.com/lava/matplotlib-cpp), a simple C++ plotting library, resemble the plotting API used by Matlab, is used to facilitate visualization.
+1. [matplotlib-cpp](https://github.com/lava/matplotlib-cpp), a simple C++ plotting library, resemble the plotting API used by Matlab, is used to facilitate visualization.
+
+2. Google Test framework for unit testing - gtest and gmock.
 
 ### Installation
 matplotlib-cpp works by wrapping the popular python plotting library matplotlib. (matplotlib.org) This means you have to have a working python installation, including development headers. On Ubuntu:
@@ -76,8 +90,11 @@ target_link_libraries(myproject ${PYTHON_LIBRARIES})
 where myproject is the project to be built.
 
 ## Standard install via command-line
+
+Note: The following branch only implements the RRT planner as GMock test is written for Map class and tested with RRT class which uses the Map class.
+
 ```
-git clone https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar.git
+git clone https://github.com/SrinidhiSreenath/ENPM808X-Midterm-InformedRRTStar.git --branch GMock_Extra_Credit
 cd <path to repository>
 mkdir build
 cd build
